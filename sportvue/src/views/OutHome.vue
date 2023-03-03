@@ -5,6 +5,7 @@
   <el-button type="primary" @click="goReg">Register</el-button>
   <el-button type="primary" @click="goUserHome">UserHome</el-button>
   <el-button type="primary" @click="test">test</el-button>
+  <img class="img" url="https://gitee.com/alanabcde/SportDemo/raw/main/sportvue/src/assets/QRCode.png" />
 </div>
 </template>
 <script>
@@ -34,5 +35,18 @@ export default{
 <style>
 .wapper {
   background-color:  #d9ecff;
+  width: 750px;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  left: 500px;
 }
+.img{
+  width: 200px;
+  height: 200px;
+}
+
 </style>

@@ -14,10 +14,9 @@
                                 <el-menu-item index="2-1"><RouterLink to="personalmainpage">MainPage</RouterLink></el-menu-item>
                                 <el-menu-item index="2-2"><RouterLink to="personalavatar">Change Avatar</RouterLink></el-menu-item>
                         </el-sub-menu>
-                        <el-menu-item index="7"><RouterLink to="/">关于我们</RouterLink></el-menu-item>
-                        <el-sub-menu index="8">
-                            <template #title>联系我们</template>
-                            <el-menu-item index="8-1"><img src="E:\Code\Driving\SportDemo\sportvue\src\assets\QRCode.JPG" /></el-menu-item>
+                        <el-menu-item index="5"><RouterLink to="/">guanyu</RouterLink></el-menu-item>
+                        <el-sub-menu index="5">
+                            <el-menu-item><img url="https://gitee.com/alanabcde/SportDemo/raw/main/sportvue/src/assets/QRCode.png" /></el-menu-item>
                         </el-sub-menu>
                         <el-button round ><RouterLink to="/login">logout</RouterLink></el-button>
                     </el-menu>
@@ -46,6 +45,5 @@ const handleSelect = (key: string, keyPath: string[]) => {
 <style>
 .el-aside {
     width: 200px;
-
 }
 </style>
