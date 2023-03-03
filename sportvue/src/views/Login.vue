@@ -3,10 +3,10 @@
   <div style="margin: 200px auto; background-color: #fff; width: 350px; height: 300px; padding: 20px; border-radius: 10px">
     <div style="margin: 20px 0; text-align: center; font-size: 24px"><b>登 录</b></div>
     <el-form-item prop="username">
-          <span>Username</span><el-input size="medium"  ></el-input>
+          <span>Username</span><el-input v-model="form.username" size="medium"  ></el-input>
         </el-form-item>
         <el-form-item prop="username">
-          <span>Password</span><el-input size="medium"  ></el-input>
+          <span>Password</span><el-input v-model="form.password" size="medium"  ></el-input>
         </el-form-item>
          <div class="my-4 flex items-center text-sm" >
           <span>role</span>
@@ -21,27 +21,42 @@
 </div>
 </template>
   
-<script lang="ts" setup>
-import {useRouter} from 'vue-router'
-import { reactive, ref } from 'vue'
-import type { FormInstance, FormRules } from 'element-plus'
+<script>
+import  axios from 'axios';
+import { ref } from 'vue'
+const dialogVisible = ref(false)
+  export default {
+      data(){
+          return {
+              form:{
+                username:'',
+                password:'',
+              }
+          }
+      },
+      created() {
+        
+      },
+    
+      methods:{
+         Login(){
+          console.log(this.form)
+          axios.post("http://localhost:9090/user/login",this.form)
+          .then(res => {
+            console.log(res)
+            if (res) {
+              const _this = this;
+              _this.$router.push('/UserFront/UserHome');
+            }
+          })
+         },
 
-const formSize = ref('default')
-const ruleFormRef = ref<FormInstance>()
-const value = ref('')
-const radio3 = ref('1')
-const router=useRouter()
-const data = reactive({
-      aboutExeVisible: false,
-})
-const Login = () => {
-    router.push('/adminfront/adminhome')
-    data.aboutExeVisible = true
-}
-const register = () => {
-    router.push('/register')
-    data.aboutExeVisible = true
-}
+         register(){
+            const _this = this;
+           _this.$router.push('/Register');
+         }
+        }
+      }
 </script>
   
 <style>

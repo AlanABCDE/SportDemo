@@ -3,7 +3,8 @@
     <div>
         <div class="demo-image__lazy">
             <el-carousel indicator-position="outside">
-    <el-carousel-item v-for="url in urls" :key="url" :src="url">
+    <el-carousel-item v-for="url in urls" :key="url">
+        <img :src="url" class="el-carousel-item-img"/>
     </el-carousel-item>
   </el-carousel>
   </div>
@@ -95,5 +96,8 @@ const urls=[
 
 .el-carousel__item:nth-child(2n + 1) {
   background-color: #d3dce6;
+}
+.el-carousel-item-img{
+    height: 100%;
 }
 </style>
