@@ -1,4 +1,4 @@
-package com.noob.sportsdemo.Controller;
+package com.noob.sportsdemo.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

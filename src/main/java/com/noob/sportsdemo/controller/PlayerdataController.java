@@ -1,4 +1,4 @@
-package com.noob.sportsdemo.Controller;
+package com.noob.sportsdemo.controller;
 
 //import com.noob.sportsdemo.entity.Playerdata;
 //import com.noob.sportsdemo.mapper.PlayerdataMapper;

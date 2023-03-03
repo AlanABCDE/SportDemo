@@ -1,10 +1,9 @@
-package com.noob.sportsdemo.Controller;
+package com.noob.sportsdemo.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.google.gson.Gson;
 import com.noob.sportsdemo.entity.User;
 import com.noob.sportsdemo.mapper.UserMapper;
-import org.apache.ibatis.jdbc.Null;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
