@@ -5,7 +5,7 @@
       :model="ruleForm"
       :rules="rules"
       label-width="120px"
-      class="demo-ruleForm"
+      class="form"
       :size="formSize"
       status-icon
     >
@@ -57,16 +57,8 @@
           </el-form-item>
         </el-col>
       </el-form-item>
-      <el-form-item label="Instant delivery" prop="delivery">
-        <el-switch v-model="ruleForm.delivery" />
-      </el-form-item>
       <el-form-item label="Activity type" prop="type">
-        <el-checkbox-group v-model="ruleForm.type">
-          <el-checkbox label="Online activities" name="type" />
-          <el-checkbox label="Promotion activities" name="type" />
-          <el-checkbox label="Offline activities" name="type" />
-          <el-checkbox label="Simple brand exposure" name="type" />
-        </el-checkbox-group>
+        <el-input style="width: 100px;" v-model="ruleForm.ename" />
       </el-form-item>
       <el-form-item label="Resources" prop="resource">
         <el-radio-group v-model="ruleForm.resource">
@@ -179,4 +171,9 @@
     label: `${idx + 1}`,
   }))
   </script>
+  <style>
+  .form{
+    width: 750px;
+  }
+  </style>
   
