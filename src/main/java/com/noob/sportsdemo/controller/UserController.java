@@ -1,9 +1,15 @@
 package com.noob.sportsdemo.controller;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import cn.hutool.core.util.StrUtil;
 import com.google.gson.Gson;
+
+import com.noob.sportsdemo.common.Constants;
+import com.noob.sportsdemo.common.Result;
 import com.noob.sportsdemo.entity.User;
+import com.noob.sportsdemo.entity.dto.UserDTO;
+import com.noob.sportsdemo.entity.dto.UserPasswordDTO;
 import com.noob.sportsdemo.mapper.UserMapper;
+import com.noob.sportsdemo.service.IUserService;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -17,6 +23,8 @@ public class UserController {
 
     @Resource
     public UserMapper userMapper;
+    @Resource
+    private IUserService userService;
 
     public Gson gson = new Gson();
 
@@ -28,19 +36,36 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String Login(@RequestBody User user) {
-        QueryWrapper<User> userQueryWrapper = new QueryWrapper<>();
-        userQueryWrapper.setEntity(user);
-        User user_selected = userMapper.selectOne(userQueryWrapper);
-        if (user_selected == null) {
-            return "no such user";
+    public Result login(@RequestBody UserDTO userDTO) {
+        String username = userDTO.getUsername();
+        String password = userDTO.getPassword();
+        if (StrUtil.isBlank(username) || StrUtil.isBlank(password)) {
+            return Result.error(Constants.CODE_400,"参数错误");
         }
-        return "success";
+        UserDTO dto = userService.login(userDTO);//包装dto
+        return Result.success(dto);
     }
 
     @PostMapping("/register")
-    public void register(@RequestBody User user) {
-        userMapper.insert(user);
+    public Result register(@RequestBody UserDTO userDTO){
+        String username = userDTO.getUsername();
+        String password = userDTO.getPassword();
+        if (StrUtil.isBlank(username) || StrUtil.isBlank(password)) {
+            return Result.error(Constants.CODE_400,"参数错误");
+        }
+        return Result.success(userService.register(userDTO));
     }
 
+    /**
+     * 修改密码
+     * @param userPasswordDTO
+     * @return
+     */
+    @PostMapping("/password")
+    public Result password(@RequestBody UserPasswordDTO userPasswordDTO) {
+        userPasswordDTO.setPassword(userPasswordDTO.getPassword());
+        userPasswordDTO.setNewPassword(userPasswordDTO.getNewPassword());
+        userService.updatePassword(userPasswordDTO);
+        return Result.success();
+    }
 }
