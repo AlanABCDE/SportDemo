@@ -11,9 +11,8 @@ import com.noob.sportsdemo.entity.dto.UserPasswordDTO;
 import com.noob.sportsdemo.mapper.UserMapper;
 import com.noob.sportsdemo.service.IUserService;
 import org.springframework.web.bind.annotation.*;
+import jakarta.annotation.Resource;
 
-
-import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
@@ -30,7 +29,7 @@ public class UserController {
 
     @GetMapping("/getUser")
     public String getUser() {
-        List<User> users = userMapper.selectList(null);
+        List<User> users = userService.list();
         System.out.println(users);
         return gson.toJson(users);
     }
