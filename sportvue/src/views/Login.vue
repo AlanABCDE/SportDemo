@@ -26,16 +26,16 @@ export default {
       formData: {
         username: '',
         password: '',
-        // role: ''
+        role: ''
       },
       rules: {
         username: [
           { required: true, message: '请输入用户名', trigger: 'blur' },
-          { min: 3, max: 10, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+          { min: 1, message: '长度大于 1 字符', trigger: 'blur' }
         ],
         password: [
           { required: true, message: '请输入密码', trigger: 'blur' },
-          { min: 1, max: 20, message: '长度在 1 到 20 个字符', trigger: 'blur' }
+          { min: 1,  message: '长度大于 1 字符', trigger: 'blur' }
         ],
       }
     }
@@ -51,37 +51,26 @@ export default {
         if (valid) {  // 表单校验合法
           axios.post("http://localhost:9090/user/login", this.formData).then(res => {
             console.log(res)
-            if (res.code === '200') {
-              localStorage.setItem("user", JSON.stringify(res.data))  // 存储用户信息到浏览器
+            console.log(res.data.role)
+            if (res.data.code === '200') {
+              console.log(res.data.role)
+               localStorage.setItem("user", JSON.stringify(res.data))// 存储用户信息到浏览器
               // setRoutes()//动态设置当前用户路由
-
+              console.log(res.data.role)
               this.$message.success("登录成功")
-              if (res.data.role === 'user') {
-                const _this = this;
-                _this.$router.push('/UserFront/UserHome');
+              console.log(res.data.role)
+              if (res.data.role === 'user'  ) {
+                this.$router.push('/UserFront/UserHome');
               } else {
-                this.$router.push('/AdminFront/AdminHome')
+                this.$router.push('/AdminFront/AdminHome',
+                console.log(res.data.role))
               }
             } else {
-              this.$message.error('sb')
+              this.$message.error(res.data.msg)
             }
           })
         }
       });
-      // console.log(this.form)
-      // this.$message.success("success")
-      // axios.post("http://localhost:9090/user/login",this.form)
-      // .then(res => {
-      //   console.log(res)
-      //   if (res.data.role==='user') {
-      //     const _this = this;
-      //     _this.$router.push('/UserFront/UserHome');
-      //   }else if(res.data.role==='admin'){
-      //     this.$router.push('/AdminFront/AdminHome')
-      //   }else{
-      //     this.$router.push('/Login')
-      //   }
-      // })
     },
 
     register() {
