@@ -6,13 +6,17 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.noob.sportsdemo.entity.User;
 import com.noob.sportsdemo.service.IUserService;
+import io.jsonwebtoken.JwtException;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-
-import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 import java.util.Date;
 
 @Component
@@ -56,5 +60,22 @@ public class TokenUtils {
             return null;
         }
         return null;
+    }
+
+
+    /**
+     * 验证JWT
+     *
+     */
+    public static void verifyJWT(String jwt, String secret)
+            throws JwtException, IllegalArgumentException {
+         Jwts.parserBuilder()
+                .setSigningKey(stringToSecretKey(secret))
+                .build()
+                .parseClaimsJws(jwt);
+    }
+
+    private static SecretKey stringToSecretKey(String secret) {
+        return new SecretKeySpec(secret.getBytes(), SignatureAlgorithm.HS256.getJcaName());
     }
 }
