@@ -12,11 +12,13 @@ import com.noob.sportsdemo.mapper.UserMapper;
 import com.noob.sportsdemo.service.IUserService;
 import com.noob.sportsdemo.utils.TokenUtils;
 import jakarta.annotation.Resource;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService, UserDetailsService {
 

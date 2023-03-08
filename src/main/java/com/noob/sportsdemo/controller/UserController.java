@@ -8,7 +8,6 @@ import com.noob.sportsdemo.common.Result;
 import com.noob.sportsdemo.entity.User;
 import com.noob.sportsdemo.entity.dto.UserDTO;
 import com.noob.sportsdemo.entity.dto.UserPasswordDTO;
-import com.noob.sportsdemo.mapper.UserMapper;
 import com.noob.sportsdemo.service.IUserService;
 import org.springframework.web.bind.annotation.*;
 import jakarta.annotation.Resource;
@@ -20,8 +19,6 @@ import java.util.List;
 @CrossOrigin
 public class UserController {
 
-    @Resource
-    public UserMapper userMapper;
     @Resource
     private IUserService userService;
 
