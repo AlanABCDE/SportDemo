@@ -1,11 +1,12 @@
 <template >
+  <div class="back">
   <h1>Campus Sports Event Management Website</h1>
   <div class="wapper">
   <el-button type="primary" @click="goLog">Login</el-button>
   <el-button type="primary" @click="goReg">Register</el-button>
   <el-button type="primary" @click="goUserHome">UserHome</el-button>
   <el-button type="primary" @click="test">test</el-button>
-  <img class="img" url="https://gitee.com/alanabcde/SportDemo/raw/main/sportvue/src/assets/QRCode.png" />
+  </div>
 </div>
 </template>
 <script>
@@ -34,7 +35,6 @@ export default{
 </script>
 <style>
 .wapper {
-  background-color:  #d9ecff;
   width: 750px;
   height: 500px;
   display: flex;
@@ -44,9 +44,12 @@ export default{
   text-align: center;
   left: 500px;
 }
-.img{
-  width: 200px;
-  height: 200px;
+.back{
+  background-image: url('E:\Code\Driving\SportDemo\sportvue\src\assets\index\94830716_p0.png');
+  background-size:100% 100%;
+  width: 100%;
+    position: absolute;
+    height:100%
 }
 
 </style>

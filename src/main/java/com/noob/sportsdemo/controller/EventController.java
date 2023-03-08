@@ -4,9 +4,10 @@ import com.google.gson.Gson;
 import com.noob.sportsdemo.entity.Event;
 import com.noob.sportsdemo.mapper.EventMapper;
 import com.noob.sportsdemo.service.impl.EventServiceImpl;
+import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
+
 import java.util.List;
 
 

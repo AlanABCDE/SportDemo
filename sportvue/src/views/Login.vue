@@ -4,10 +4,10 @@
       <div style="margin: 20px 0; text-align: center; font-size: 24px;color: #000;"><b>登 录</b></div>
       <el-form :model="formData" :rules="rules" ref="userForm">
       <el-form-item prop="username">
-        <span class="txt">Username</span><el-input v-model="formData.username" size="medium"></el-input>
+        <span class="txt">Username</span><el-input v-model="formData.username" size="medium" placeholder="请输入账号"></el-input>
       </el-form-item>
       <el-form-item prop="password">
-        <span class="txt">Password</span><el-input v-model="formData.password" size="medium"></el-input>
+        <span class="txt">Password</span><el-input v-model="formData.password" size="medium" show-password placeholder="请输入密码"></el-input>
       </el-form-item>
       <el-button type="primary" @Click="Login">登录</el-button><el-button type="warning" @Click="register">注册</el-button>
       </el-form>
@@ -82,11 +82,6 @@ export default {
   
 <style>
 .wrapper {
-  /* width: 1903px;
-  height: 1500px;
-  margin: 0px;
-  background-image: linear-gradient(to bottom right, #53c466, #3F5EFB);
-  overflow: hidden; */
   background-image: url('E:\Code\Driving\SportDemo\sportvue\src\assets\index\002.JPG');
   background-size:100% 100%;
     width: 100%;
