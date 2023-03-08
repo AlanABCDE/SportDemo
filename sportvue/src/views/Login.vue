@@ -1,14 +1,13 @@
 <template>
   <div  class="wrapper" >
-    <div
-      style="margin: 200px auto; background-color: #fff; width: 350px; height: 300px; padding: 20px; border-radius: 10px">
-      <div style="margin: 20px 0; text-align: center; font-size: 24px"><b>登 录</b></div>
+    <div class="block">
+      <div style="margin: 20px 0; text-align: center; font-size: 24px;color: #000;"><b>登 录</b></div>
       <el-form :model="formData" :rules="rules" ref="userForm">
       <el-form-item prop="username">
-        <span>Username</span><el-input v-model="formData.username" size="medium"></el-input>
+        <span class="txt">Username</span><el-input v-model="formData.username" size="medium"></el-input>
       </el-form-item>
       <el-form-item prop="password">
-        <span>Password</span><el-input v-model="formData.password" size="medium"></el-input>
+        <span class="txt">Password</span><el-input v-model="formData.password" size="medium"></el-input>
       </el-form-item>
       <el-button type="primary" @Click="Login">登录</el-button><el-button type="warning" @Click="register">注册</el-button>
       </el-form>
@@ -88,9 +87,18 @@ export default {
   margin: 0px;
   background-image: linear-gradient(to bottom right, #53c466, #3F5EFB);
   overflow: hidden; */
-  background-image: url('https://pixivel.moe/f5e5adb7-ddfb-4afa-ab2b-af91b4797d74');
+  background-image: url('E:\Code\Driving\SportDemo\sportvue\src\assets\index\002.JPG');
+  background-size:100% 100%;
     width: 100%;
     position: absolute;
-    height:65px
+    height:100%
+}
+.block{
+  margin: 200px auto;  width: 350px; height: 300px; padding: 20px; border-radius: 10px;
+  background-color: rgb(92,93,73,0.5);
+  border:100px;
+}
+.txt{
+  color: rgb(211, 211, 211);
 }
 </style>

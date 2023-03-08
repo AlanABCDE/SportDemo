@@ -9,6 +9,6 @@
 .background {
     height: 1000px;
     width: 100%;
-    background-color:  #d9ecff;
+    
 }
 </style>

@@ -72,6 +72,7 @@ a{
   text-decoration: none;
   color: #000;}
 .common-layout{
+    background-image: url('https://eaassets-a.akamaihd.net/battlelog/bb/bfh/backgrounds/bfhbg-de1c8ba8.png');
     width: 100%;
     height: 100%;
   }

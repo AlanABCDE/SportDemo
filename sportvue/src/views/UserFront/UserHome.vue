@@ -90,13 +90,6 @@ const urls=[
     width: 100px;
 }
 
-.el-carousel__item:nth-child(2n) {
-  background-color: #99a9bf;
-}
-
-.el-carousel__item:nth-child(2n + 1) {
-  background-color: #d3dce6;
-}
 .el-carousel-item-img{
     height: 100%;
 }
