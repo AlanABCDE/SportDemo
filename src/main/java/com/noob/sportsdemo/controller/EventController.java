@@ -35,4 +35,10 @@ public class EventController {
     public Result delete(@PathVariable Integer id){
         return Result.success(eventService.removeById(id)) ;
     }
+
+    @PostMapping("/holdEvent")
+    public Result holdEvent(@RequestBody Event event){
+        eventService.saveOrUpdate(event);
+        return Result.success();
+    }
 }
