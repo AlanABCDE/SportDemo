@@ -1,6 +1,7 @@
 package com.noob.sportsdemo.controller;
 
 import com.google.gson.Gson;
+import com.noob.sportsdemo.common.Result;
 import com.noob.sportsdemo.entity.Event;
 import com.noob.sportsdemo.mapper.EventMapper;
 import com.noob.sportsdemo.service.impl.EventServiceImpl;
@@ -29,5 +30,9 @@ public class EventController {
         List<Event> events = eventMapper.selectList(null);
         System.out.println(events);
         return gson.toJson(events);
+    }
+    @DeleteMapping("/{id}")
+    public Result delete(@PathVariable Integer id){
+        return Result.success(eventService.removeById(id)) ;
     }
 }

@@ -45,24 +45,23 @@ export default {
 
   methods: {
     Login() {
-      console.log(this.formData)
+      const _this=this
       this.$refs['userForm'].validate((valid) => {
         if (valid) {  // 表单校验合法
           axios.post("http://localhost:9090/user/login", this.formData).then(res => {
-            console.log(res)
+            _this.formData=res.data
+            console.log(_this.formData)
             console.log(res.data.role)
             if (res.data.code === '200') {
-              console.log(res.data.role)
                localStorage.setItem("user", JSON.stringify(res.data))// 存储用户信息到浏览器
               // setRoutes()//动态设置当前用户路由
-              console.log(res.data.role)
               this.$message.success("登录成功")
-              console.log(res.data.role)
-              if (res.data.role === 'user'  ) {
+              if (_this.formData == 'user'  ) {
                 this.$router.push('/UserFront/UserHome');
               } else {
                 this.$router.push('/AdminFront/AdminHome',
-                console.log(res.data.role))
+                
+                )
               }
             } else {
               this.$message.error(res.data.msg)

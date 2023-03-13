@@ -49,8 +49,8 @@ const handleSelect = (key: string, keyPath: string[]) => {
     width: 200px;
 }
 .common-layout{
-    background-image:url('https://d34ymitoc1pg7m.cloudfront.net/bf3/backgrounds/bg-bf3-premium-3b9d9943.jpg');
-    height: 100%;
+    /* background-image:url('https://d34ymitoc1pg7m.cloudfront.net/bf3/backgrounds/bg-bf3-premium-3b9d9943.jpg');
+    height: 100%; */
 }
 .head{
     background-image: url('E:\Code\Driving\SportDemo\sportvue\src\assets\backlogo.png');

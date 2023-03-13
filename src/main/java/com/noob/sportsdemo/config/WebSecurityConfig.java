@@ -25,8 +25,8 @@ public class WebSecurityConfig implements WebMvcConfigurer {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http.authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/user/**").permitAll()
-                        .requestMatchers("/event/**").permitAll()
+                        .requestMatchers("/**").permitAll()
+                        .requestMatchers("/**").permitAll()
                 ).csrf().disable()
                 .formLogin().and()
                 .logout(LogoutConfigurer::permitAll)

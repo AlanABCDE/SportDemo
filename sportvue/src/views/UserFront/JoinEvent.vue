@@ -1,12 +1,15 @@
 <template>
     <h1>JoinEvent</h1>
-    <el-table :data="tableData" style="width: 100%">
-    <el-table-column prop="eid" label="赛事编号" width="180" />
-      <el-table-column prop="ename" label="赛事名称" width="180" />
-      <el-table-column prop="edate" label="赛事日期" width="180" />
-      <el-table-column prop="etime" label="赛事时间" width="180" />
-      <el-table-column prop="eplace" label="赛事场地" width="180" />
-      <el-table-column prop="edis" label="赛事描述" />
+    <el-table :data="tableData.slice((page - 1)*limit , page * limit)" style="width: 100%">
+    <el-table-column prop="id" label="赛事编号" width="180" />
+      <el-table-column prop="eventName" label="赛事名称" width="180" />
+      <el-table-column prop="eventDate" label="赛事日期" width="180" />
+      <el-table-column prop="eventTime" label="赛事时间" width="180" />
+      <el-table-column prop="eventZone" label="赛事场地" width="180" />
+      <el-table-column prop="eventDis" label="赛事描述" />
+      <el-table-column prop="eventPlayernumber" label="参赛人数" />
+      <el-table-column prop="eventHolder" label="举办人" />
+  
       <el-table-column fixed="right" label="Operations" width="120">
         <template #default>
           <el-button link type="primary" size="small" @click="handleClick"
@@ -32,31 +35,50 @@
         </template>
       </el-table-column>
     </el-table>
+    <el-pagination
+      :current-page="page"
+      :page-size="limit"
+      :page-sizes="[5, 10, 15, 20]"
+      background
+      layout="total, sizes, prev, pager, next, jumper"
+      :total="total"
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+    />
   </template>
   
   <script >
   import  axios from 'axios';
   import { ref } from 'vue'
-  const dialogVisible = ref(false)
+  const dialogVisible = ref(false) 
     export default {
         data(){
             return {
                 tableData: [
                     {   
-                        eid:'',
-                        ename:'' ,
-                        edate:'',
-                        etime:'',
-                        eplace:'',
-                        edis:''
+                      id:'',
+                      eventName:'' ,
+                      eventDate:'',
+                      eventTime:'',
+                      eventZone:'',
+                      eventDis:'',
+                      eventPlayernumber:'',
+                      eventJoinednumber:'',
+                      eventHolder:'',
                     },
                 ],
+              page: 1,
+              limit: 5,
+              total: 0
             }
         },
         created() {
-            const  _this=this
-            axios.get("http://localhost:9090/event/getEvent").then(function(res){
-                _this.tableData=res.data;
+          const  _this=this
+          axios.get("http://localhost:9090/event/getEvent")
+          .then(res => {
+            console.log(res)
+            this.tableData = [...res.data]
+            this.total = res.data.length
             })
             // axios.post("http://localhost:8181/demo/phb",this.phb).then(function (res) {
             //     console.log(res.data);
@@ -73,8 +95,14 @@
         // }
         methods:{
           handleClick(){
-  
-          }
+          },
+          handleSizeChange(val){
+          this.limit=val
+          this.page = 1
+        },
+        handleCurrentChange(val){
+          this.page=val
+        }
         }
     }
   

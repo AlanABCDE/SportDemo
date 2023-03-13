@@ -65,4 +65,5 @@ public class UserController {
         userService.updatePassword(userPasswordDTO);
         return Result.success();
     }
+
 }

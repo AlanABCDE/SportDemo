@@ -16,8 +16,10 @@ public class Event {
     private String  eventName;
     private Date eventDate;
     private Time eventTime;
-    private String eventTplace;
+    private String eventZone;
     private String eventDis;
     private String eventPlayernumber;
+    private String eventJoinednumber;
+    private String eventHolder;
 
 }

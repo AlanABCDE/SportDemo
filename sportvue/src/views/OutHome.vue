@@ -27,7 +27,7 @@ export default{
   },
   test(){
     const _this = this;
-    _this.$router.push('/test');
+    _this.$router.push('/adminfront/adminhome');
   },
 }
 }

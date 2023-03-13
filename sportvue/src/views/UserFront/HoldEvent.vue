@@ -1,5 +1,6 @@
 <template>
     <h1>HoldEvent</h1>
+     <div class="divform">
     <el-form
       ref="ruleFormRef"
       :model="ruleForm"
@@ -76,6 +77,7 @@
         <el-button @click="resetForm(ruleFormRef)">Reset</el-button>
       </el-form-item>
     </el-form>
+  </div>
   </template>
   
   <script lang="ts" setup>
@@ -174,6 +176,11 @@
   <style>
   .form{
     width: 750px;
+  }
+  .divform{
+    width: 800px;
+    padding-left: 500px;
+    
   }
   </style>
   

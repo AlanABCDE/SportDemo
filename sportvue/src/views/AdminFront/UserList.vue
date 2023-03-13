@@ -1,4 +1,5 @@
 <template>
+  <h1>UserList</h1>
   <el-table :data="tableData.slice((page - 1)*limit,page * limit)" style="width: 100%">
   <el-table-column prop="uid" label="编号" width="180" />
     <el-table-column prop="username" label="名字" width="180" />
