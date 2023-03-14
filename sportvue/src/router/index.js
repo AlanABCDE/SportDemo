@@ -49,6 +49,7 @@ const router = createRouter({
                 { path: 'personalddit', name: 'PersonalEdit',component: () => import('../views/UserFront/PersonalEdit.vue')},
                 { path: 'personalmainpage', name: 'PersonalMainPage',component: () => import('../views/UserFront/PersonalMainPage.vue')},
                 { path: 'scoreboard', name: 'ScoreBoard',component: () => import('../views/UserFront/ScoreBoard.vue')},
+                { path: 'team', name: 'Team',component: () => import('../views/UserFront/Team.vue')},
             ]
         }
     ]

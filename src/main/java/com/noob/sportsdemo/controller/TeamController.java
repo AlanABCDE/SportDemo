@@ -27,10 +27,9 @@ public class TeamController {
 
     public Gson gson = new Gson();
 
-    @GetMapping("/getTeam")
-    public String getTeam() {
-        List<Team> teams = teamMapper.getTeam();
-        System.out.println(teams);
-        return gson.toJson(teams);
+    @GetMapping ("/selTeam/{teamName}")
+    public Result selectTeam(@PathVariable String teamName) {
+        return Result.success(teamService.selectTeam(teamName));
+
     }
 }

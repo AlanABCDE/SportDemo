@@ -8,6 +8,7 @@
                         <el-menu-item index="2"><RouterLink to="holdevent"><h1 class="h1">Hold an Event</h1></RouterLink></el-menu-item>
                         <el-menu-item index="3"><RouterLink to="managemyevent"><h1 class="h1">Manage my Event</h1></RouterLink></el-menu-item>
                         <el-menu-item index="4"><RouterLink to="joinevent"><h1 class="h1">Join an Event</h1></RouterLink></el-menu-item>
+                        <el-menu-item index="7"><RouterLink to="team"><h1 class="h1">Team</h1></RouterLink></el-menu-item>
                         <el-menu-item index="5"><RouterLink to="scoreboard"><h1 class="h1">Scoreboard</h1></RouterLink></el-menu-item>
                         <el-sub-menu index="6">
                                 <template #title><h1 class="h1">Personal Center</h1></template>
