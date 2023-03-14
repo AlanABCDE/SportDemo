@@ -22,6 +22,8 @@ public class User implements UserDetails {
     private String password;
     private String role;
     private String email;
+    private String classNo;
+    private String teamId;
     @TableField(exist = false)
     private String avatarUrl;
 

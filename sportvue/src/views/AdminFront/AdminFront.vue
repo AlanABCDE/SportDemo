@@ -19,7 +19,7 @@
                             <el-icon>
                                 <document />
                             </el-icon>
-                            <span><RouterLink to="eventlist">EventList</RouterLink> </span>
+                            <span><RouterLink to="matchresult">MatchResult</RouterLink> </span>
                         </el-menu-item>
                         <el-menu-item index="4">
                             <el-icon>

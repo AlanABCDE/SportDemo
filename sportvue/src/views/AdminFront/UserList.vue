@@ -7,6 +7,8 @@
     <el-table-column prop="sex" label="性别" width="180" />
     <el-table-column prop="role" label="角色" width="180" />
     <el-table-column prop="email" label="邮件" />
+    <el-table-column prop="classNo" label="班号" />
+    <el-table-column prop="teamId" label="所属队伍" />
     <el-table-column fixed="right" label="Operations" width="120">
       <template #default>
         <el-button link type="primary" size="small" @click="handleClick"
@@ -58,6 +60,8 @@ const dialogVisible = ref(false)
                       sex:'',
                       password:'',
                       role:'',
+                      classNo:'',
+                      teamId:'',
                   },
               ],
               page: 1,

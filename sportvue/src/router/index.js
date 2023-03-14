@@ -31,7 +31,7 @@ const router = createRouter({
                 { path: 'front', name: 'front',component: () => import('../views/AdminFront/AdminFront.vue')},
                 { path: 'adminhome', name: 'AdminHome',component: () => import('../views/AdminFront/AdminHome.vue')},
                 { path: 'userlist', name: 'UserList',component: () => import('../views/AdminFront/UserList.vue')},
-                { path: 'eventlist', name: 'EventList',component: () => import('../views/AdminFront/EventList.vue')},
+                { path: 'matchresult', name: 'MatchResult',component: () => import('../views/AdminFront/MatchResult.vue')},
                 { path: 'manageevent', name: 'ManageEvent',component: () => import('../views/AdminFront/ManageEvent.vue')},
                 { path: 'sendmessage', name: 'SendMessage',component: () => import('../views/AdminFront/SendMessage.vue')},
             ]
