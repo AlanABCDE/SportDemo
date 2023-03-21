@@ -94,7 +94,7 @@
   
   <style>
   .wrapper {
-    background-image: url('E:\Code\Driving\SportDemo\sportvue\src\assets\index\002.JPG');
+    background-image: url('E:\Code\Driving\SportDemo\sportvue\src\assets\index\92118283_p0.jpg');
     background-size:100% 100%;
     width: 100%;
     position: absolute;

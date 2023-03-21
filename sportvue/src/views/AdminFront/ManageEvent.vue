@@ -1,6 +1,6 @@
 <template v-slot="scope">
   <h1>EventManage</h1>
-  <el-table :data="tableData.slice((page - 1) * limit, page * limit)" style="width: 100%">
+  <el-table :data="tableData.slice((page - 1) * limit, page * limit)" style="width: 100%" @row-click="getrowid">
     <el-table-column prop="id" label="赛事编号" width="180" />
     <el-table-column prop="eventName" label="赛事名称" width="180" />
     <el-table-column prop="eventDate" label="赛事日期" width="180" />
@@ -11,14 +11,14 @@
     <el-table-column prop="eventHolder" label="举办人" />
 
     <el-table-column label="操作" >
-      <el-button @click="edit(scope.row)">Edit</el-button>
+      <el-button @click="edit()">Edit</el-button>
       <el-popconfirm
     confirm-button-text="Yes"
     cancel-button-text="No"
     :icon="InfoFilled"
     icon-color="#626AEF"
     title="Are you sure to delete this?"
-    @confirm="del(scope.row.id)"
+    @confirm="del()"
     @cancel="cancelEvent"
   >
     <template #reference>
@@ -53,6 +53,7 @@ export default {
           eventHolder: '',
         },
       ],
+      rowid:'',
       page: 1,
       limit: 5,
       total: 0
@@ -67,6 +68,9 @@ export default {
       })
   },
   methods: {
+    getrowid(){
+      rowid = row
+    },
     handleClick() {
     },
     handleSizeChange(val) {
@@ -76,18 +80,17 @@ export default {
     handleCurrentChange(val) {
       this.page = val
     },
-    del(id) {
-      axios.delete("http://localhost:9090/event/" + id)
-        .then(res => {
-          if (res) {
-            this.$message.success("ok")
-          } else {
+    del(rowid) {
+      if(rowid.val){
+        axios.delete("http://localhost:9090/event/" + this.rowid)
+        this.$message.success("ok")
+      }else{
             this.$message.error("g")
           }
-        })
-    }
+        }
+    },
+
   }
-}
 
 </script>
   

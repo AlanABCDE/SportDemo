@@ -4,23 +4,24 @@
             <el-container>
                 <div class="head">
                     <el-menu default-active="1" class="menu" mode="horizontal" @select="handleSelect">
-                        <el-menu-item index="1"><RouterLink to="userhome"><h1 class="h1">HomePage</h1></RouterLink></el-menu-item>
-                        <el-menu-item index="2"><RouterLink to="holdevent"><h1 class="h1">Hold an Event</h1></RouterLink></el-menu-item>
-                        <el-menu-item index="3"><RouterLink to="managemyevent"><h1 class="h1">Manage my Event</h1></RouterLink></el-menu-item>
-                        <el-menu-item index="4"><RouterLink to="joinevent"><h1 class="h1">Join an Event</h1></RouterLink></el-menu-item>
-                        <el-menu-item index="7"><RouterLink to="team"><h1 class="h1">Team</h1></RouterLink></el-menu-item>
-                        <el-menu-item index="5"><RouterLink to="scoreboard"><h1 class="h1">Scoreboard</h1></RouterLink></el-menu-item>
+                        <el-menu-item index="1"><RouterLink to="userhome"><h1 class="h1">主页</h1></RouterLink></el-menu-item>
+                        <el-menu-item index="2"><RouterLink to="holdevent"><h1 class="h1">举办赛事</h1></RouterLink></el-menu-item>
+                        <el-menu-item index="3"><RouterLink to="managemyevent"><h1 class="h1">管理我的赛事</h1></RouterLink></el-menu-item>
+                        <el-menu-item index="4"><RouterLink to="joinevent"><h1 class="h1">寻找赛事</h1></RouterLink></el-menu-item>
+                        <el-menu-item index="7"><RouterLink to="team"><h1 class="h1">小队查询</h1></RouterLink></el-menu-item>
+                        <el-menu-item index="5"><RouterLink to="scoreboard"><h1 class="h1">得分榜</h1></RouterLink></el-menu-item>
                         <el-sub-menu index="6">
-                                <template #title><h1 class="h1">Personal Center</h1></template>
+                                <template #title><h1 class="h1">个人中心</h1></template>
                                 <el-menu-item index="2-1"><RouterLink to="personalmainpage"><h1 class="h1">MainPage</h1></RouterLink></el-menu-item>
                                 <el-menu-item index="2-2"><RouterLink to="personalavatar"><h1 class="h1">Change Avatar</h1></RouterLink></el-menu-item>
                         </el-sub-menu>
-                        <el-menu-item index="5"><RouterLink to="/"><h1 class="h1">guanyu</h1></RouterLink></el-menu-item>
+                        <el-menu-item index="5"><RouterLink to="/"><h1 class="h1">关于我</h1></RouterLink></el-menu-item>
                         <el-sub-menu >
+                            <template #title><h1 class="h1">有事联系我</h1></template>
                             <img src="https://raw.githubusercontent.com/AlanABCDE/SportDemo/main/sportvue/src/assets/QRCode.png" class="erweima"/>
                         </el-sub-menu>
                         <div class="User-Avatar">
-                            <el-button round ><RouterLink to="/login">logout</RouterLink></el-button>
+                            <el-button round ><RouterLink to="/login">登出</RouterLink></el-button>
                         </div>
                     </el-menu>
                 </div>
@@ -73,6 +74,6 @@ const handleSelect = (key: string, keyPath: string[]) => {
     margin: 0 20%;
 }
 .User-Avatar{
-    margin: 0.8% 0 0 30%;
+    margin: 0.8% 0 0 37%;
 }
 </style>

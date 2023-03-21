@@ -1,11 +1,11 @@
 <template >
   <div class="back">
-  <h1>Campus Sports Event Management Website</h1>
+  <h1 class="fadein">欢迎使用体育赛事管理网站</h1>
   <div class="wapper">
-  <el-button type="primary" @click="goLog">Login</el-button>
-  <el-button type="primary" @click="goReg">Register</el-button>
-  <el-button type="primary" @click="goUserHome">UserHome</el-button>
-  <el-button type="primary" @click="test">test</el-button>
+  <el-button type="primary" @click="goLog">得先登录</el-button>
+  <el-button type="primary" @click="goReg">还没注册?</el-button>
+  <el-button type="primary" @click="goUserHome">我就看看</el-button>
+  <el-button type="primary" @click="test">权</el-button>
   </div>
 </div>
 </template>
@@ -34,15 +34,20 @@ export default{
 
 </script>
 <style>
+
+.fadein {
+  opacity: 1;
+  transition: opacity 1s;
+}
 .wapper {
-  width: 750px;
+  /* width: 750px;
   height: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   text-align: center;
-  left: 500px;
+  left: 500px; */
 }
 .back{
   background-image: url('E:\Code\Driving\SportDemo\sportvue\src\assets\index\94830716_p0.png');
@@ -51,5 +56,6 @@ export default{
     position: absolute;
     height:100%
 }
+
 
 </style>
