@@ -1,7 +1,7 @@
 <template>
   <h1>JoinEvent</h1>
   <el-table :data="tableData.slice((page - 1) * limit, page * limit)" style="width: 100%">
-    <el-table-column prop="id" label="赛事编号" width="180" />
+    <el-table-column prop="eventId" label="赛事编号" width="180" />
     <el-table-column prop="eventName" label="赛事名称" width="180" />
     <el-table-column prop="eventDate" label="赛事日期" width="180" />
     <el-table-column prop="eventTime" label="赛事时间" width="180" />
@@ -43,7 +43,7 @@ export default {
       dialogVisible: false,
       tableData: [
         {
-          id: '',
+          eventId: '',
           eventName: '',
           eventDate: '',
           eventTime: '',

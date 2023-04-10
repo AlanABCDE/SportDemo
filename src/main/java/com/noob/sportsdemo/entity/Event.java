@@ -12,7 +12,7 @@ import java.util.Date;
 @Setter
 public class Event {
     @TableId(type = IdType.AUTO)
-    private Integer id;
+    private Integer eventId;
     private String  eventName;
     private Date eventDate;
     private Time eventTime;

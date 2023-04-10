@@ -2,7 +2,7 @@
     <h1>SendMessage</h1>
     <div class="msgbox">
     <el-table :data="tableData.slice((page - 1) * limit, page * limit)" >
-      <el-table-column prop="id" label="编号" width="180" />
+      <el-table-column prop="msgId" label="编号" width="180" />
       <el-table-column prop="title" label="标题" width="180" />
       <el-table-column prop="date" label="发布日期" width="180" />
       <el-table-column prop="uploader" label="发布人" width="180" />
@@ -28,7 +28,7 @@
       return {
         tableData: [
           {
-            id: '',
+            msgId: '',
             title: '',
             content: '',
             date: '',

@@ -10,7 +10,7 @@ import java.util.Date;
 @Getter
 public class Message {
     @TableId(type = IdType.AUTO)
-    private Integer id;
+    private Integer msgId;
     private String title;
     private String content;
     private Date date;

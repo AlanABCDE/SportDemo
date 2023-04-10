@@ -62,7 +62,7 @@ export default {
     return {
       tableData: [
         {
-          id: '',
+          eventId: '',
           eventName: '',
           eventDate: '',
           eventTime: '',
