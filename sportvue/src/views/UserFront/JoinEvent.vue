@@ -1,5 +1,5 @@
 <template>
-  <h1>JoinEvent</h1>
+  <h1>参加赛事</h1>
   <el-table :data="tableData.slice((page - 1) * limit, page * limit)" style="width: 100%">
     <el-table-column prop="eventId" label="赛事编号" width="180" />
     <el-table-column prop="eventName" label="赛事名称" width="180" />
