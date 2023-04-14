@@ -47,25 +47,32 @@ export default {
     Login() {
       const _this=this
       this.$refs['userForm'].validate((valid) => {
+
         if (valid) {  // 表单校验合法
           axios.post("http://localhost:9090/user/login", this.formData).then(res => {
             _this.formData=res.data
             console.log(_this.formData)
-            console.log(res.data.role)
+            //console.log(res.data.data.role)
+            console.log(res.data.data)
+
             if (res.data.code === '200') {
-               localStorage.setItem("user", JSON.stringify(res.data))// 存储用户信息到浏览器
+               localStorage.setItem("user", JSON.stringify(res.data.data))// 存储用户信息到浏览器
               // setRoutes()//动态设置当前用户路由
-              this.$message.success("登录成功")
-              if (_this.formData == 'user'  ) {
+              console.log(JSON.stringify(res.data.data))
+                this.tableData=res.data.data
+                console.log("-------------------------------")
+                console.log(JSON.stringify(this.tableData.data))
+              if (res.data.data.role == 'user'  ) {
                 this.$router.push('/UserFront/UserHome');
-              } else {
-                this.$router.push('/AdminFront/AdminHome',
-                
-                )
-              }
+                this.$message.success("登录成功")
+              } else if(res.data.data.role == 'admin'){
+                this.$router.push('/AdminFront/AdminHome')
+                this.$message.success("登录成功")
+              } 
             } else {
               this.$message.error(res.data.msg)
-            }
+              //console.log(res.data.msg)
+            } 
           })
         }
       });

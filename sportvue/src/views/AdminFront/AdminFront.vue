@@ -12,7 +12,7 @@
                             <span><RouterLink to="/adminfront/adminhome">HomePage</RouterLink></span>
                         </el-menu-item>
                         <el-menu-item index="2">
-                            <el-icon><icon-menu /></el-icon>
+                            <el-icon><document /></el-icon>
                             <span><RouterLink to="userlist">UserList</RouterLink></span>
                         </el-menu-item>
                         <el-menu-item index="3" >
@@ -38,26 +38,25 @@
             </el-aside>
         <el-container>
             <el-Header class="head">
-                <el-button round ><RouterLink to="/login">logout</RouterLink></el-button>
+                <span>{{ user.username }}</span>
+                <el-button round ><RouterLink to="/">logout</RouterLink></el-button>
             </el-Header>
             <el-Main><router-view></router-view></el-Main>
         </el-container>
         </el-container>
     </div>
 </template>
-<script lang="ts" setup>
-import { createApp, ref } from 'vue'
-import {
-    Document,
-    Menu as IconMenu,
-    Location,
-    Setting,
-} from '@element-plus/icons-vue'
+<script >
 
-const activeIndex = ref('1')
-const activeIndex2 = ref('1')
-const handleSelect = (key: string, keyPath: string[]) => {
-    console.log(key, keyPath)
+import axios from 'axios';
+import { ref } from 'vue'
+export default{
+    name: "Front",
+    data(){
+        return {
+            user : localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : {}
+        }
+    }
 }
 </script>
 <style>

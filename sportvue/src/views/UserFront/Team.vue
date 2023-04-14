@@ -5,12 +5,12 @@
             <el-button class="ml-5" type="primary" @click="load">搜索</el-button>
             <el-button type="warning" @click="reset">重置</el-button>
         </div>
-        <el-table :data="tableData" border style="width: 100%;height: 300px;">
+        <el-table :data="tableData" style="width: 100%;height: 300px;">
             
-            <el-table-column prop="this.teamId" label="小队编号" width="180" align:center/>
-            <el-table-column prop="this.teamName" label="小队" width="180" />
-            <el-table-column prop="this.username" label="成员" width="180" />
-            <el-table-column prop="this.classNo" label="所属班级" align="center"/>
+            <el-table-column prop="teamId" label="teamId" width="180" />
+            <el-table-column prop="teamName" label="teamName" width="180" />
+            <el-table-column prop="username" label="username" width="180" />
+            <el-table-column prop="classNo" label="classNo" />
         </el-table>
     </div>
 </template>
@@ -21,34 +21,27 @@ import axios from 'axios';
 export default {
     data() {
         return {
-            tableData: [
-                {
-                  teamId:'',
-                  teamName:'',
-                  username:'',
-                  classNo:''
-                }
-            ],
-            selteamName:" "
+            tableData: [],
+            selteamName:''
         }
     },
     created() {
-
     },
     methods: {
         load(){
             axios.get("http://localhost:9090/team/selTeam/"+this.selteamName,{
             })
             .then(res => {
-                console.log(res)
-                this.tableData=res.data
-                console.log(this.tableData)
+                console.log(JSON.stringify(res.data.data))
+                this.tableData=res.data.data
+                console.log("-------------------------------")
+                console.log(JSON.stringify(this.tableData.data))
             })
         },
         reset() {
-      this.selteamName=''
-      this.load()
-    },
+            this.selteamName=''
+            //this.load()
+        },
     }
 }
 

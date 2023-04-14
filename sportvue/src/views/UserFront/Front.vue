@@ -21,7 +21,8 @@
                             <img src="https://raw.githubusercontent.com/AlanABCDE/SportDemo/main/sportvue/src/assets/QRCode.png" class="erweima"/>
                         </el-sub-menu>
                         <div class="User-Avatar">
-                            <el-button round ><RouterLink to="/login">登出</RouterLink></el-button>
+                            <span>{{ user.username }}</span>
+                            <el-button round  @click="logout">登出</el-button>
                         </div>
                     </el-menu>
                 </div>
@@ -31,19 +32,27 @@
         </el-container>
     </div>
 </template>
-<script lang="ts" setup>
-import { createApp, ref } from 'vue'
-import {
-    Document,
-    Menu as IconMenu,
-    Location,
-    Setting,
-} from '@element-plus/icons-vue'
+<script >
+import axios from 'axios';
+import { ref } from 'vue'
+export default{
+    name: "Front",
+    data(){
+        return {
+            user : localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : {}
+        }
+    },
+    created(){
 
-const activeIndex = ref('1')
-const activeIndex2 = ref('1')
-const handleSelect = (key: string, keyPath: string[]) => {
-    console.log(key, keyPath)
+    },
+    methods:{
+        logout(){
+            const _this = this;
+    _this.$router.push('/');
+        this.$store.commit("logout")
+        this.$message.success("退出成功")
+        }
+    }
 }
 </script>
 <style>
