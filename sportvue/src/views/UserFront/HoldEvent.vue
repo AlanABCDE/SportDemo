@@ -54,14 +54,15 @@
 </template>
   
 <script>
+import axios from 'axios';
 import { ref } from 'vue'
 const formSize = ref('default')
 
 export default {
   data() {
     return {
-      tableData: [
-        {
+      tableData: {
+        
           eventId: '',
           eventName: '',
           eventDate: '',
@@ -70,8 +71,7 @@ export default {
           eventDis: '',
           eventPlayernumber: '',
           eventHolder: '',
-        }
-      ],
+        },
       options:{
 
       },
@@ -136,6 +136,16 @@ export default {
         this.eventTime = '',
         this.eventDis = '',
         this.eventZone = ''
+      },
+      submit() {
+        console.log(this.tableData)
+        axios.post("http://localhost:9090/event/holdEvent", this.tableData).then(res => {
+              if(res.data.code === '200') {
+                this.$message.success("添加成功")
+              } else {
+                this.$message.error(res.data.msg)
+              }
+            })
       }
 
   }

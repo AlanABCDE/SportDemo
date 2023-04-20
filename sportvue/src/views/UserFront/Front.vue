@@ -21,7 +21,7 @@
                             <img src="https://raw.githubusercontent.com/AlanABCDE/SportDemo/main/sportvue/src/assets/QRCode.png" class="erweima"/>
                         </el-sub-menu>
                         <div class="User-Avatar">
-                            <span>{{ user.username }}</span>
+                            <span>欢迎，{{ user.username }}</span>
                             <el-button round  @click="logout">登出</el-button>
                         </div>
                     </el-menu>
@@ -83,6 +83,6 @@ export default{
     margin: 0 20%;
 }
 .User-Avatar{
-    margin: 0.8% 0 0 37%;
+    margin: 0.8% 0 0 30%;
 }
 </style>

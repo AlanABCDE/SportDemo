@@ -9,37 +9,37 @@
                     >
                         <el-menu-item index="1">
                             <el-icon><House /></el-icon>
-                            <span><RouterLink to="/adminfront/adminhome">HomePage</RouterLink></span>
+                            <span><RouterLink to="/adminfront/adminhome">主页</RouterLink></span>
                         </el-menu-item>
                         <el-menu-item index="2">
                             <el-icon><document /></el-icon>
-                            <span><RouterLink to="userlist">UserList</RouterLink></span>
+                            <span><RouterLink to="userlist">用户管理</RouterLink></span>
                         </el-menu-item>
                         <el-menu-item index="3" >
                             <el-icon>
                                 <document />
                             </el-icon>
-                            <span><RouterLink to="matchresult">MatchResult</RouterLink> </span>
+                            <span><RouterLink to="matchresult">成绩管理</RouterLink> </span>
                         </el-menu-item>
                         <el-menu-item index="4">
                             <el-icon>
                                 <setting />
                             </el-icon>
-                            <span><RouterLink to="manageevent">Manage Event</RouterLink></span>
+                            <span><RouterLink to="manageevent">赛事管理</RouterLink></span>
                         </el-menu-item>
                         <el-menu-item index="4">
                             <el-icon>
                                 <setting />
                             </el-icon>
-                            <span><RouterLink to="sendmessage">Send Message</RouterLink></span>
+                            <span><RouterLink to="sendmessage">消息管理</RouterLink></span>
                         </el-menu-item>
                     </el-menu>
                 </el-col>
             </el-aside>
         <el-container>
             <el-Header class="head">
-                <span>{{ user.username }}</span>
-                <el-button round ><RouterLink to="/">logout</RouterLink></el-button>
+                <span class="username">欢迎，{{ user.username }}</span>
+                <el-button round ><RouterLink to="/">登出</RouterLink></el-button>
             </el-Header>
             <el-Main><router-view></router-view></el-Main>
         </el-container>
@@ -71,15 +71,18 @@ a{
   text-decoration: none;
   color: #000;}
 .common-layout{
-    background-image: url('https://eaassets-a.akamaihd.net/battlelog/bb/bfh/backgrounds/bfhbg-de1c8ba8.png');
+    /* background-image: url('https://eaassets-a.akamaihd.net/battlelog/bb/bfh/backgrounds/bfhbg-de1c8ba8.png');
     width: 100%;
-    height: 100%;
+    height: 100%; */
   }
 .el-menu{
     height: 1080px;
     width: 200px;
 }
 .head{
-    height: 15px;
+    height: 75px;
+}
+.username{
+    margin-left: 1400px;
 }
 </style>

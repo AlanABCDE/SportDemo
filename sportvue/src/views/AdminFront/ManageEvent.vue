@@ -18,7 +18,7 @@
     :icon="InfoFilled"
     icon-color="#626AEF"
     title="Are you sure to delete this?"
-    @confirm="del()"
+    @confirm="del(scope.row.id)"
     @cancel="cancelEvent"
   >
     <template #reference>
@@ -33,7 +33,7 @@
     @current-change="handleCurrentChange" />
 </template>
   
-<script >
+<script>
 import axios from 'axios';
 import { ref } from 'vue'
 const dialogVisible = ref(false)
@@ -68,9 +68,6 @@ export default {
       })
   },
   methods: {
-    getrowid(){
-      rowid = row
-    },
     handleClick() {
     },
     handleSizeChange(val) {
@@ -80,9 +77,9 @@ export default {
     handleCurrentChange(val) {
       this.page = val
     },
-    del(rowid) {
-      if(rowid.val){
-        axios.delete("http://localhost:9090/event/" + this.rowid)
+    del(id) {
+      if(id){
+        axios.delete("http://localhost:9090/event/" + this.id)
         this.$message.success("ok")
       }else{
             this.$message.error("g")

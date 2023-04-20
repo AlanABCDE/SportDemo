@@ -14,8 +14,8 @@ public class Event {
     @TableId(type = IdType.AUTO)
     private Integer eventId;
     private String  eventName;
-    private Date eventDate;
-    private Time eventTime;
+    private String eventDate;
+    private String  eventTime;
     private String eventZone;
     private String eventDis;
     private String eventPlayernumber;

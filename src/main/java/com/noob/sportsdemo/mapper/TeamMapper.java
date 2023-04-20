@@ -13,5 +13,5 @@ import java.util.List;
 public interface TeamMapper extends BaseMapper<Team> {
 
     @Select("select * from user join team on user.team_id = team.team_id where team.team_name = #{teamName};")
-    public List<Team> selectByTeamName(@Param("teamName")String teamName);
+   List<Team> selectByTeamName(@Param("teamName")String teamName);
 }

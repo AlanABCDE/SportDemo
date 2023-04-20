@@ -5,7 +5,6 @@
       <el-table-column prop="msgId" label="编号" width="180" />
       <el-table-column prop="title" label="标题" width="180" />
       <el-table-column prop="date" label="发布日期" width="180" />
-      <el-table-column prop="uploader" label="发布人" width="180" />
       <el-table-column fixed="right" label="Operations" width="180">
         <template #default>
           <el-button link type="primary" size="small" @click="dialogVisible = true">Detail</el-button>
@@ -32,7 +31,6 @@
             title: '',
             content: '',
             date: '',
-            uploader: '',
           },
         ],
         page: 1,
