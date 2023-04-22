@@ -8,14 +8,15 @@
                         <el-menu-item index="2"><RouterLink to="holdevent"><h1 class="h1">举办赛事</h1></RouterLink></el-menu-item>
                         <el-menu-item index="3"><RouterLink to="managemyevent"><h1 class="h1">管理我的赛事</h1></RouterLink></el-menu-item>
                         <el-menu-item index="4"><RouterLink to="joinevent"><h1 class="h1">寻找赛事</h1></RouterLink></el-menu-item>
-                        <el-menu-item index="7"><RouterLink to="team"><h1 class="h1">小队查询</h1></RouterLink></el-menu-item>
-                        <el-menu-item index="5"><RouterLink to="scoreboard"><h1 class="h1">得分榜</h1></RouterLink></el-menu-item>
-                        <el-sub-menu index="6">
+                        <el-menu-item index="5"><RouterLink to="team"><h1 class="h1">小队查询</h1></RouterLink></el-menu-item>
+                        <el-menu-item index="6"><RouterLink to="usermsg"><h1 class="h1">通知</h1></RouterLink></el-menu-item>
+                        <el-menu-item index="7"><RouterLink to="scoreboard"><h1 class="h1">得分榜</h1></RouterLink></el-menu-item>
+                        <el-sub-menu index="8">
                                 <template #title><h1 class="h1">个人中心</h1></template>
-                                <el-menu-item index="2-1"><RouterLink to="personalmainpage"><h1 class="h1">MainPage</h1></RouterLink></el-menu-item>
-                                <el-menu-item index="2-2"><RouterLink to="personalavatar"><h1 class="h1">Change Avatar</h1></RouterLink></el-menu-item>
+                                <el-menu-item index="8-1"><RouterLink to="personalmainpage"><h1 class="h1">MainPage</h1></RouterLink></el-menu-item>
+                                <el-menu-item index="8-2"><RouterLink to="personalavatar"><h1 class="h1">Change Avatar</h1></RouterLink></el-menu-item>
                         </el-sub-menu>
-                        <el-menu-item index="5"><RouterLink to="/"><h1 class="h1">关于我</h1></RouterLink></el-menu-item>
+                        <el-menu-item index="9"><RouterLink to="/"><h1 class="h1">关于我</h1></RouterLink></el-menu-item>
                         <el-sub-menu >
                             <template #title><h1 class="h1">有事联系我</h1></template>
                             <img src="https://raw.githubusercontent.com/AlanABCDE/SportDemo/main/sportvue/src/assets/QRCode.png" class="erweima"/>
@@ -26,7 +27,7 @@
                         </div>
                     </el-menu>
                 </div>
-                <el-main><router-view></router-view></el-main>
+                <el-main class="box"><router-view></router-view></el-main>
                 
             </el-container>
         </el-container>
@@ -83,6 +84,10 @@ export default{
     margin: 0 20%;
 }
 .User-Avatar{
-    margin: 0.8% 0 0 30%;
+    margin: 0.8% 0 0 25%;
+}
+.box{
+    background-color: rgb(229, 248, 242);
+    height: 1080px;
 }
 </style>

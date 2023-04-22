@@ -88,15 +88,15 @@ export default {
   
 <style>
 .wrapper {
-  background-image: url('E:\Code\Driving\SportDemo\sportvue\src\assets\index\92118283_p0.jpg');
-  background-size:100% 100%;
+  background-image: url('https://cdn4.eyeem.com/thumb/b62716d62756471677a3a3a373236323133333031323335313d293531366161693834613361603437366460383136673837303433656037323333336164336164646a3a3a3/1100/1100');
+ background-size:100% 100%;
     width: 100%;
     position: absolute;
     height:100%
 }
 .block{
   margin: 200px auto;  width: 350px; height: 300px; padding: 20px; border-radius: 10px;
-  background-color: rgb(92,93,73,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   border:100px;
 }
 .txt{

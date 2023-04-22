@@ -25,7 +25,7 @@ public class User implements UserDetails {
     private String classNo;
     private String teamId;
     @TableField(exist = false)
-    private Byte avatarUrl;
+    private String avatarUrl;
 
 
     @Override

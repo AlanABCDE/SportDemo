@@ -1,13 +1,14 @@
 <template>
-    <h1>Welcome to HomePage</h1>
+    <div class="box">
+    <h1>欢迎使用校园体育赛事管理平台</h1>
     <div>
         <div class="demo-image__lazy">
             <el-carousel indicator-position="outside">
-    <el-carousel-item v-for="url in urls" :key="url">
-        <img :src="url" class="el-carousel-item-img"/>
-    </el-carousel-item>
-  </el-carousel>
-  </div>
+                <el-carousel-item v-for="url in urls" :key="url">
+                    <img :src="url" class="el-carousel-item-img" />
+                </el-carousel-item>
+            </el-carousel>
+        </div>
 
         <div style="margin:auto;width:90%">
             <el-row :gutter="12">
@@ -17,11 +18,13 @@
                             <span>新闻</span>
                             <el-button style="float: right; padding: 3px 0" type="text">更多</el-button>
                         </div>
-                        <div v-for="o in 4" :key="o" class="text item">
-                            <div style="width:100px">
-                                {{ '一条新闻 ' + o }}
+                        <div class="text item">
+                            <div style="width:200px">
+                                <el-link href="https://element.eleme.io" target="_blank">喜迎二十大</el-link>
+                                <el-link href="https://element.eleme.io" target="_blank">恭喜阿根廷世界杯夺冠</el-link>
+                                <el-link href="https://element.eleme.io" target="_blank">奋力开创体育强国建设新局面</el-link>
+                                <el-link href="https://element.eleme.io" target="_blank">少年强则国强</el-link>
                             </div>
-
                         </div>
                     </el-card>
                 </el-col>
@@ -31,8 +34,13 @@
                             <span>活动</span>
                             <el-button style="float: right; padding: 3px 0" type="text">更多</el-button>
                         </div>
-                        <div v-for="o in 4" :key="o" class="text item" width="">
-                            {{ '一条活动 ' + o }}
+                        <div class="text item">
+                            <div style="width:200px">
+                                <el-link   href="https://element.eleme.io" target="_blank">基沃托斯光轮大赛正式开幕</el-link>
+                                <el-link   href="https://element.eleme.io" target="_blank">FIFA World Cup大赛正式开幕</el-link>
+                                <el-link   href="https://element.eleme.io" target="_blank">CBA正式开幕</el-link>
+                                <el-link   href="https://element.eleme.io" target="_blank">NBA季后赛赛正式开幕</el-link>
+                            </div>
                         </div>
                     </el-card>
                 </el-col>
@@ -42,25 +50,29 @@
                             <span>公告</span>
                             <el-button style="float: right; padding: 3px 0" type="text">更多</el-button>
                         </div>
-                        <div v-for="o in 4" :key="o" class="text item">
-                            {{ '一条公告 ' + o }}
+                        <div class="text item">
+                            <div style="width:200px">
+                                <el-link href="https://element.eleme.io" target="_blank">关于平台开始试运行的一则公告</el-link>
+                                <el-link href="https://element.eleme.io" target="_blank">关于平台现存漏洞的一则公告</el-link>
+                                <el-link href="https://element.eleme.io" target="_blank">关于平台开始维护的一则公告</el-link>
+                                <el-link href="https://element.eleme.io" target="_blank">关于平台的版权声明的一则公告</el-link>
+                            </div>
                         </div>
                     </el-card>
                 </el-col>
             </el-row>
         </div>
 
-
-
     </div>
+</div>
 </template>
 <script lang="ts" setup>
 
-const urls=[
-  'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
-  'https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg',
-  'https://fuss10.elemecdn.com/0/6f/e35ff375812e6b0020b6b4e8f9583jpeg.jpeg',
-  'https://fuss10.elemecdn.com/9/bb/e27858e973f5d7d3904835f46abbdjpeg.jpeg',
+const urls = [
+    'https://cdn4.eyeem.com/thumb/b62716d62756471677a3a3a313236323031363837363634313d223235346332356336316031616669366338313039356236653332693163343935373163343661653a3a3a3/1100/1100',
+    'https://ts1.cn.mm.bing.net/th/id/R-C.010f83b74aa0e87c53bac1e885fa8434?rik=ugeClDWr3GRdeg&riu=http%3a%2f%2fpic.zsucai.com%2ffiles%2f2013%2f0718%2ftycx8.jpg&ehk=suCZTMpGpy01JZCjblUW%2btsTQC0p6xeE8%2ftRKmvdTBI%3d&risl=&pid=ImgRaw&r=0',
+    'https://png.pngtree.com/back_origin_pic/04/04/20/af56207b880b599795a67ef59c434c26.jpg',
+    'https://cdn4.eyeem.com/thumb/b62716d62756471677a3a3a353132323238323033303835313d283232393234356262323231633832326638333666353165336260383331373135643430303466616a3a3a3/1100/1100',
 ]
 </script>
 <style>
@@ -90,7 +102,8 @@ const urls=[
     width: 100px;
 }
 
-.el-carousel-item-img{
+.el-carousel-item-img {
     height: 100%;
 }
+
 </style>

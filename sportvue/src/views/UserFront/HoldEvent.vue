@@ -1,27 +1,27 @@
 <template>
-  <h1>HoldEvent</h1>
+  <h1>赛事创建</h1>
   <div class="divform">
     <el-form ref="ruleFormRef" :model="tableData" :rules="rules" label-width="120px" class="form" :size="formSize"
       status-icon>
-      <el-form-item label="Event Name" prop="eventName">
+      <el-form-item label="赛事名称" prop="eventName">
         <el-input v-model="tableData.eventName" />
       </el-form-item>
-       <el-form-item label="Event zone" prop="eventZone">
-        <el-select v-model="tableData.eventZone" placeholder="Event zone">
-          <el-option label="Basketball Court 1" value="Basketball Court 1" />
-          <el-option label="Basketball Court 2" value="Basketball Court 2" />
-          <el-option label="Basketball Court 3" value="Basketball Court 3" />
-          <el-option label="Basketball Court 4" value="Basketball Court 4" />
-          <el-option label="Soccer Court 1" value="Soccer Court 1" />
-          <el-option label="Soccer Court 2" value="Soccer Court 2" />
-          <el-option label="Soccer Court 3" value="Soccer Court 3" />
-          <el-option label="Soccer Court 4" value="Soccer Court 4" />
+       <el-form-item label="比赛场地" prop="eventZone">
+        <el-select v-model="tableData.eventZone" placeholder="选择一个场地">
+          <el-option label="篮球场1" value="篮球场1" />
+          <el-option label="篮球场2" value="篮球场2" />
+          <el-option label="篮球场3" value="篮球场3" />
+          <el-option label="足球场1" value="足球场1" />
+          <el-option label="足球场2" value="足球场2" />
+          <el-option label="网球场1" value="网球场1" />
+          <el-option label="网球场2" value="网球场2" />
+          <el-option label="网球场3" value="网球场3" />
         </el-select>
       </el-form-item>
-      <el-form-item label="Activity time" required>
+      <el-form-item label="比赛时间" required>
         <el-col :span="11">
           <el-form-item prop="eventDate">
-            <el-date-picker v-model="tableData.eventDate" type="date" label="Pick a date" placeholder="Pick a date"
+            <el-date-picker v-model="tableData.eventDate" type="date" label="Pick a date" placeholder="选个日期"
               style="width: 100%" />
           </el-form-item>
         </el-col>
@@ -30,24 +30,24 @@
         </el-col>
         <el-col :span="11">
           <el-form-item prop="eventTime">
-            <el-time-picker v-model="tableData.eventTime" label="Pick a time" placeholder="Pick a time" style="width: 100%" />
+            <el-time-picker v-model="tableData.eventTime" label="Pick a time" placeholder="选个日期" style="width: 100%" />
           </el-form-item>
         </el-col>
       </el-form-item>
-      <el-form-item label="Activity Size" prop="eventPlayernumber">
+      <el-form-item label="比赛人数" prop="eventPlayernumber">
         <el-input style="width: 100px;" v-model="tableData.eventPlayernumber" />
       </el-form-item>
-      <el-form-item label="eventHolder" prop="eventHolder">
+      <el-form-item label="承办人姓名" prop="eventHolder">
         <el-input v-model="tableData.eventHolder" />
       </el-form-item>
-      <el-form-item label="Activity form" prop="eventDis">
+      <el-form-item label="赛事描述" prop="eventDis">
         <el-input v-model="tableData.eventDis" type="textarea" />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="submit">
-          Create
+          提交
         </el-button>
-        <el-button @click="resetForm('formName')">Reset</el-button>
+        <el-button @click="resetForm('formName')">重置</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -78,25 +78,25 @@ export default {
       rules: {
         eventName: [
           { required: true, 
-            message: 'Please input Event name', 
+            message: '请输入个比赛名称', 
             trigger: 'blur' },
         ],
         eventHolder: [
           { required: true, 
-            message: 'Please input Holder name', 
+            message: '请输入承办人姓名', 
             trigger: 'blur' },
         ],
         eventZone: [
           {
             required: true,
-            message: 'Please select Event zone',
+            message: '请选择比赛场地',
             trigger: 'blur',
           },
         ],
         eventPlayernumber: [
           {
             required: true,
-            message: 'Please select Activity count',
+            message: '请输入比赛人数',
             trigger: 'blur',
           },
         ],
@@ -104,7 +104,7 @@ export default {
           {
             type: 'date',
             required: true,
-            message: 'Please pick a date',
+            message: '请选择比赛日期',
             trigger: 'blur',
           },
         ],
@@ -112,13 +112,13 @@ export default {
           {
             type: 'date',
             required: true,
-            message: 'Please pick a time',
+            message: '请选择比赛时间',
             trigger: 'blur',
           },
         ],
         eventDis: [
           { required: true, 
-            message: 'Please input activity form', 
+            message: '请输入比赛描述', 
             trigger: 'blur' },
         ],
       }

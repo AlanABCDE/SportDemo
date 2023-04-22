@@ -94,7 +94,7 @@
   
   <style>
   .wrapper {
-    background-image: url('E:\Code\Driving\SportDemo\sportvue\src\assets\index\92118283_p0.jpg');
+    background-image: url('https://cdn4.eyeem.com/thumb/b62716d62756471677a3a3a373236333130363432323734313d283133346531393364343631656636666464663330316533326337343434683137303236663666626a3a3a3/1100/1100');
     background-size:100% 100%;
     width: 100%;
     position: absolute;
@@ -102,7 +102,7 @@
     }
   .block{
   margin: 200px auto;  width: 350px; height: 300px; padding: 20px; border-radius: 10px;
-  background-color: rgb(92,93,73,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   border:100px;
 }
 .txt{

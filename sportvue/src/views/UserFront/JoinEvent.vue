@@ -35,8 +35,6 @@
   
 <script >
 import axios from 'axios';
-import { ref } from 'vue'
-const dialogVisible = ref(false)
 export default {
   data() {
     return {
@@ -78,15 +76,13 @@ export default {
     handleCurrentChange(val) {
       this.page = val
     },
-    handleClose(done){
-    ElMessageBox.confirm('Are you sure to close this dialog?')
-    .then(() => {
-      done()
-    })
-    .catch(() => {
-      // catch error
-    })
-}
+    handleClose(done) {
+        this.$confirm('确认关闭？')
+          .then(_ => {
+            done();
+          })
+          .catch(_ => {});
+      }
   }
 }
 
