@@ -1,73 +1,185 @@
 <template>
-    <h1>SendMessage</h1>
-    <div class="msgbox">
-    <el-table :data="tableData.slice((page - 1) * limit, page * limit)" >
+  <h1>通知管理</h1>
+  <el-button class="b1" @click="dialogVisible = true" type="primary">新增通知</el-button>
+  <el-dialog v-model="dialogVisible" title="新增通知" width="30%" :before-close="handleClose">
+    <span>csb</span>
+    <template #footer>
+      <span class="dialog-footer">
+        <el-button @click="dialogVisible = false">不加了</el-button>
+        <el-button type="primary" @click="dialogVisible = false">交了</el-button>
+      </span>
+    </template>
+  </el-dialog>
+  <div class="msgbox">
+    <el-table :data="tableData.slice((page - 1) * limit, page * limit)">
       <el-table-column prop="msgId" label="编号" width="180" />
       <el-table-column prop="title" label="标题" width="180" />
-      <el-table-column prop="date" label="发布日期" width="180" />
-      <el-table-column fixed="right" label="Operations" width="180">
-        <template #default>
-          <el-button link type="primary" size="small" @click="dialogVisible = true">Detail</el-button>
-          <el-button link type="primary" size="small" @click="dialogVisible = true">Edit</el-button>
-        </template>
+      <el-table-column prop="createTime" label="发布日期" width="180" />
+      <el-table-column prop="manage" label="管理" width="180">
+      <template v-slot="scope">
+        <el-button type="success" @click="dialogVisible1 = true">管理<i class="el-icon-edit"></i></el-button>
+        <el-button type="danger"  @click="deleteMsg(scope.row.msgId)">删了</el-button>
+      </template>
       </el-table-column>
     </el-table>
-    <el-pagination :current-page="page" :page-size="limit" :page-sizes="[5, 10, 15, 20]" background
-      layout="total, sizes, prev, pager, next, jumper" :total="total" @size-change="handleSizeChange"
-      @current-change="handleCurrentChange" />
-    </div>
-  </template>
+    <el-pagination 
+          class="span" 
+          :current-page="page" 
+          :page-size="limit" 
+          :page-sizes="[5, 10, 15, 20]" background
+          layout="total, sizes, prev, pager, next, jumper" 
+          :total="total" 
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange" />
+  </div>
+  <el-dialog v-model="dialogVisible1" title="修改通知" width="30%" :before-close="handleClose">
+    <el-form ref="form" :model="formData" label-width="80px">
+      <el-form-item label="确认编号">
+        <el-input v-model="formData.msgId" autocomplete="off"></el-input>
+      </el-form-item>
+      <el-form-item label="标题">
+        <el-input v-model="formData.title"></el-input>
+      </el-form-item>
+      <el-form-item label="内容">
+        <el-input type="textarea" :autosize="{ minRows: 2, maxRows: 4 }" placeholder="请输入内容" v-model="formData.content">
+        </el-input>
+      </el-form-item>
+      <el-form-item label="活动时间">
+        <el-col :span="11">
+          <el-date-picker type="date" placeholder="选择日期" v-model="formData.createTime" style="width: 100%;"></el-date-picker>
+        </el-col>
+        <el-col class="line" :span="2">-</el-col>
+        <el-col :span="11">
+          <el-time-picker type="time" placeholder="选择时间" v-model="formData.createTime" style="width: 100%;"></el-time-picker>
+        </el-col>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="update">立即修改</el-button>
+
+      </el-form-item>
+    </el-form>
+    <template #footer>
+      <span class="dialog-footer">
+        <el-button @click="dialogVisible1 = false">不改了</el-button>
+      </span>
+    </template>
+  </el-dialog>
+</template>
   
-  <script >
-  import axios from 'axios';
-  import { ref } from 'vue'
-  const dialogVisible = ref(false)
-  export default {
-    data() {
-      return {
-        tableData: [
-          {
-            msgId: '',
-            title: '',
-            content: '',
-            date: '',
-          },
-        ],
-        page: 1,
-        limit: 5,
-        total: 0
-      }
-    },
-    created() {
-      axios.get("http://localhost:9090/msg/getMsg")
-        .then(res => {
-          console.log(res)
-          this.tableData = [...res.data]
-          this.total = res.data.length
-        })
-    },
-    methods: {
-      handleClick() {
+<script >
+import axios from 'axios';
+export default {
+  data() {
+    return {
+      tableData: [
+        {
+          msgId: '',
+          title: '',
+          content: '',
+          createTime: '',
+        },
+      ],
+      formData:
+      {
+        msgId:'',
+        title: '',
+        content: '',
+        createTime: '',
       },
-      handleSizeChange(val) {
-        this.limit = val
-        this.page = 1
-      },
-      handleCurrentChange(val) {
-        this.page = val
-      }
+      page: 1,
+      limit: 5,
+      total: 0,
+      dialogVisible: false,
+      dialogVisible1: false
     }
+  },
+  created() {
+    axios.get("http://localhost:9090/msg/getMsg")
+      .then(res => {
+        console.log(res)
+        this.tableData = [...res.data]
+        this.total = res.data.length
+      })
+  },
+  methods: {
+    load(){
+      axios.get("http://localhost:9090/msg/getMsg")
+      .then(res => {
+        console.log(res)
+        this.tableData = [...res.data]
+        this.total = res.data.length
+      })
+    },
+    handleClick() {
+    },
+    handleEdit(msgId) {
+      this.form = msgId
+      dialogFormVisible = true
+    },
+    handleSizeChange(val) {
+      this.limit = val
+      this.page = 1
+    },
+    handleCurrentChange(val) {
+      this.page = val
+    },
+    handleClose(done) {
+      this.$confirm('确认关闭？')
+        .then(_ => {
+          done();
+        })
+        .catch(_ => { });
+    },
+    onSubmit() {
+      console.log(this.formData)
+      axios.post("http://localhost:9090/msg/addMsg", this.formData).then(res => {
+        if (res.data.code === '200') {
+          this.$message.success("添加成功")
+        } else {
+          this.$message.error(res.data.msg)
+        }
+        dialogVisible = false
+      })
+    },
+    update() {
+      console.log(this.formData)
+      axios.post("http://localhost:9090/msg/updateMsg", this.formData).then(res => {
+        if (res.data.code === '200') {
+          this.$message.success("修改成功")
+          this.load()
+        } else {
+          this.$message.error(res.data.msg)
+        }
+      })
+      this.dialogVisible1 = false
+      
+    },
+    deleteMsg(msgId) {
+      console.log(msgId)
+      axios.delete("http://localhost:9090/msg/" + msgId).then(res => {
+        if (res) {
+          this.$message.success("删除成功")
+          this.load()
+        } else {
+          this.$message.error("删除失败")
+        }
+      })
+    },
   }
-  
-  </script>
-<style>
-.msgbox{
-  width: 1200px;
-  margin-left: 250px;
-  background-color: rgb(255, 255, 255);
 }
-.el-scrollbar{
-margin-right: 300px;
+
+</script>
+<style>
+.el-table__header-wrapper {
+  margin-left: 473px;
+}
+
+.span {
+  margin-left: 473px;
+}
+
+.b1 {
+  margin-left: -631px;
 }
 </style>
   

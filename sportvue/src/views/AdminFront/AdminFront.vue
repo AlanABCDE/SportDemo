@@ -31,7 +31,7 @@
                             <el-icon>
                                 <setting />
                             </el-icon>
-                            <span><RouterLink to="sendmessage">消息管理</RouterLink></span>
+                            <span><RouterLink to="sendmessage">通知管理</RouterLink></span>
                         </el-menu-item>
                     </el-menu>
                 </el-col>

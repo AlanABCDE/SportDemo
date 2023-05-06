@@ -26,7 +26,6 @@
   
 <script>
 import axios from 'axios';
-
 export default {
   data() {
     return {
@@ -69,7 +68,6 @@ export default {
     }
   }
 }
-
 </script>
 <style>
 .msgbox {
@@ -77,10 +75,7 @@ export default {
   padding-left: 500px;
   background-color: rgb(255, 255, 255);
 }
-
 .el-scrollbar {
   margin-right: 600px;
 }
 </style>
-  
-  

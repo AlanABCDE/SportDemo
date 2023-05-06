@@ -76,20 +76,8 @@ const dialogVisible = ref(false)
             this.tableData = [...res.data]
             this.total = res.data.length
           })
-      
-          // axios.post("http://localhost:8181/demo/phb",this.phb).then(function (res) {
-          //     console.log(res.data);
-          //     _this.phb = res.data;
-          // })
       },
-      // methods:{
-      //     go(id){
-      //         const  _this=this
-      //         console.log(id)
-      //         _this.Can.user_id=sessionStorage.getItem('user_id')
-      //         this.$router.push({path:'drawingpage',query:{id:id,uid:_this.Can.user_id}})
-      //     }
-      // }
+
       methods:{
         handleClick(){},
         handleSizeChange(val){

@@ -13,5 +13,6 @@ public class UserDTO {
     private String avatarUrl;
     private String role;//角色
     private String token;
+    private String sex;
 
 }

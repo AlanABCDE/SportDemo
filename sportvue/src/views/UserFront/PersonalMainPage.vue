@@ -12,23 +12,28 @@
       </div>
     </template>
     <div>
-        <span class="span">Username :  user01</span>
-        <span class="span">sex :  男</span>
-        <span class="span">role : user  </span>
-        <span class="span">email :  1@sports.com</span>
+        <span class="span">Username :  {{ user.username }}</span>
+        <span class="span">sex :  {{ user.sex }}</span>
+        <span class="span">role : {{ user.role }}</span>
+        <span class="span">email :  {{ user.token }}</span>
     </div>
   </el-card>
     </div>
 </template>
-<script lang="ts" setup>
-import { reactive, toRefs } from 'vue'
+<script>
+export default{
+    name: "UserMsg",
+    data(){
+        return {
+            user : localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : {}
+        }
+    },
+    created(){
 
-const state = reactive({
-  circleUrl:
-    'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
-})
-
-const { circleUrl } = toRefs(state)
+    },
+    methods:{
+    }
+}
 </script>
 <style>
 .el-card__body {

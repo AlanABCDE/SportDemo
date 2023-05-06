@@ -23,9 +23,9 @@ export default {
   data() {
     return {
       formData: {
-        username: '',
-        password: '',
-        role: ''
+        // username: '',
+        // password: '',
+        // role: ''
       },
       rules: {
         username: [

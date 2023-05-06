@@ -41,4 +41,9 @@ public class EventController {
         eventService.saveOrUpdate(event);
         return Result.success();
     }
+    @GetMapping ("/selEvent/{eventHolder}")
+    public Result selEvent(@PathVariable String eventHolder) {
+        return Result.success(eventService.selectByEvent(eventHolder));
+
+    }
 }
