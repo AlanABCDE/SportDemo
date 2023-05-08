@@ -37,8 +37,8 @@
       <el-form-item label="比赛人数" prop="eventPlayernumber">
         <el-input style="width: 100px;" v-model="tableData.eventPlayernumber" />
       </el-form-item>
-      <el-form-item label="承办人姓名" prop="eventHolder">
-        <el-input v-model="tableData.eventHolder" />
+      <el-form-item label="承办人姓名" prop="username">
+        <el-input v-model="tableData.eventHolder"  disabled></el-input>
       </el-form-item>
       <el-form-item label="赛事描述" prop="eventDis">
         <el-input v-model="tableData.eventDis" type="textarea" />
@@ -61,6 +61,7 @@ const formSize = ref('default')
 export default {
   data() {
     return {
+      user: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : {},
       tableData: {
         
           eventId: '',
@@ -72,6 +73,7 @@ export default {
           eventPlayernumber: '',
           eventHolder: '',
         },
+        userInfo:{},
       options:{
 
       },
@@ -125,7 +127,13 @@ export default {
     }
   },
   created() {
-    
+    axios.get("http://localhost:9090/user/selUser/" + this.user.username)
+      .then(res => {
+        console.log(res)
+        this.userInfo = res.data.data
+        console.log(this.userInfo)
+        this.tableData.eventHolder=this.userInfo.username
+      })
   },
   methods:{
     resetForm() {

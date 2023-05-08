@@ -57,7 +57,7 @@
       </el-form-item>
       <el-form-item label="角色" prop="role">
         <el-col :span="8">
-          <el-input v-model="userInfo.role"  />
+          <el-input v-model="userInfo.role"  disabled/>
         </el-col>
       </el-form-item>
       <el-form-item label="电子邮箱" prop="email">

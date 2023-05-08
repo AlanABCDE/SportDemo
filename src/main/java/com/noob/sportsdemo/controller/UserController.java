@@ -39,6 +39,10 @@ public class UserController {
     public Result updateUserInfo(@RequestBody User user){
         return Result.success(userService.saveOrUpdate(user));
     }
+    @DeleteMapping("/{id}")
+    public Result delete(@PathVariable Integer id){
+        return Result.success(userService.removeById(id)) ;
+    }
 
     @PostMapping("/login")
     public Result login(@RequestBody UserDTO userDTO) {
