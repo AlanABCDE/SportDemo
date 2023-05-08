@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 
 import com.noob.sportsdemo.common.Constants;
 import com.noob.sportsdemo.common.Result;
+import com.noob.sportsdemo.entity.Event;
 import com.noob.sportsdemo.entity.User;
 import com.noob.sportsdemo.entity.dto.UserDTO;
 import com.noob.sportsdemo.entity.dto.UserPasswordDTO;
@@ -29,6 +30,14 @@ public class UserController {
         List<User> users = userService.list();
         System.out.println(users);
         return gson.toJson(users);
+    }
+    @GetMapping ("/selUser/{username}")
+    public Result selUser(@PathVariable String username) {
+        return Result.success(userService.selectByUsername(username));
+    }
+    @PostMapping("/updateUserInfo")
+    public Result updateUserInfo(@RequestBody User user){
+        return Result.success(userService.saveOrUpdate(user));
     }
 
     @PostMapping("/login")

@@ -18,9 +18,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Slf4j
 @Service
-public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService, UserDetailsService {
+public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
 
     @Resource
     private UserMapper userMapper;
@@ -64,6 +66,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         }
     }
 
+    @Override
+    public User selectByUsername(String username) {
+        return userMapper.selectByUsername(username);
+    }
+
     private User getUserInfo(UserDTO userDTO) {//获取当前角色的菜单列表
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("username", userDTO.getUsername());
@@ -80,29 +87,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         return one;
     }
 
-    @Override
+ /*   @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("username", username);
         return userMapper.selectOne(queryWrapper);
-    }
+    }*/
 
-//    private List<Menu> getRoleMenus(String roleFlag){    //设置当前角色菜单列表
-//        Integer roleId = roleMapper.selectByFlag(roleFlag);//查询角色的id
-//        List<Integer> menuIds = roleMenuMapper.selectByRoleId(roleId);//查询角色对应的所有菜单id集合
-//        List<Menu> menus = menuService.findMenus("");//查询系统所有菜单
-//
-//        List<Menu> roleMenus = new ArrayList<>();//筛选后的菜单list
-//        //筛选当前用户菜单
-//        for (Menu menu :menus) {
-//            if (menuIds.contains(menu.getId())){
-//                roleMenus.add(menu);
-//            }
-//            List<Menu> children = menu.getChildren();//二级菜单
-//            children.removeIf(child ->!menuIds.contains(child.getId()));//移除子菜单中不包含的菜单项
-//        }
-//        System.out.println("roleMenus---------------------"+roleMenus);
-//        return roleMenus;
-//    }
 
 }

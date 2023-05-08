@@ -34,14 +34,14 @@ public class WebSecurityConfig implements WebMvcConfigurer {
     }
 
 
-    @Bean
+/*    @Bean
     public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
         return http.getSharedObject(AuthenticationManagerBuilder.class)
                 .userDetailsService(userService)
                 .passwordEncoder(passwordEncoder())
                 .and()
                 .build();
-    }
+    }*/
 
     @Bean
     public PasswordEncoder passwordEncoder() {

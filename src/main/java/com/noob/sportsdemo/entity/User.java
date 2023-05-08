@@ -14,7 +14,7 @@ import java.util.List;
 
 @Setter
 @Getter
-public class User implements UserDetails {
+public class User  {
     @TableId(type = IdType.AUTO)
     private Integer uid;
     private String username;
@@ -28,7 +28,7 @@ public class User implements UserDetails {
     private String avatarUrl;
 
 
-    @Override
+/*    @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of((GrantedAuthority) () -> role);
     }
@@ -51,5 +51,5 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return false;
-    }
+    }*/
 }
