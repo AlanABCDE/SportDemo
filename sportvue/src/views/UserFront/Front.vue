@@ -13,8 +13,8 @@
                         <el-menu-item index="7"><RouterLink to="scoreboard"><h1 class="h1">得分榜</h1></RouterLink></el-menu-item>
                         <el-sub-menu index="8">
                                 <template #title><h1 class="h1">个人中心</h1></template>
-                                <el-menu-item index="8-1"><RouterLink to="personalmainpage"><h1 class="h1">MainPage</h1></RouterLink></el-menu-item>
-                                <el-menu-item index="8-2"><RouterLink to="personalavatar"><h1 class="h1">Change Avatar</h1></RouterLink></el-menu-item>
+                                <el-menu-item index="8-1"><RouterLink to="personalmainpage"><h1 class="h1">个人主页</h1></RouterLink></el-menu-item>
+                                <el-menu-item index="8-2"><RouterLink to="personalavatar"><h1 class="h1">修改头像</h1></RouterLink></el-menu-item>
                         </el-sub-menu>
                         <el-menu-item index="9"><RouterLink to="/"><h1 class="h1">关于我</h1></RouterLink></el-menu-item>
                         <el-sub-menu >

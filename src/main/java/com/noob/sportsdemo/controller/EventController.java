@@ -44,6 +44,5 @@ public class EventController {
     @GetMapping ("/selEvent/{eventHolder}")
     public Result selEvent(@PathVariable String eventHolder) {
         return Result.success(eventService.selectByEvent(eventHolder));
-
     }
 }

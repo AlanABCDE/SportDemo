@@ -9,28 +9,37 @@
     <el-table-column prop="eventDis" label="赛事描述" />
     <el-table-column prop="eventPlayernumber" label="参赛人数" />
     <el-table-column prop="eventHolder" label="举办人" />
-
-    <el-table-column fixed="right" label="Operations" width="120">
-      <template #default>
-        <el-button link type="primary" size="small" text  @click="dialogVisible = true">Detail</el-button>
-        <el-dialog v-model="dialogVisible" title="Tips" width="30%" :before-close="handleClose">
-          <span>This is a message</span>
-          <template #footer>
-            <span class="dialog-footer">
-              <el-button @click="dialogVisible = false">Cancel</el-button>
-              <el-button type="primary" @click="dialogVisible = false">
-                Confirm
-              </el-button>
-            </span>
-          </template>
-        </el-dialog>
-        <el-button link type="primary" size="small" @click="dialogVisible = true">Join</el-button>
+    <el-table-column fixed="right" label="操作" width="120">
+      <template v-slot="scope">
+        <el-button link type="primary" size="small" @click="eventDetail(scope.row.eventId)">详情</el-button>
+        <el-button link type="primary" size="small" @click="open">我要报名</el-button>
       </template>
     </el-table-column>
   </el-table>
   <el-pagination :current-page="page" :page-size="limit" :page-sizes="[5, 10, 15, 20]" background
     layout="total, sizes, prev, pager, next, jumper" :total="total" @size-change="handleSizeChange"
     @current-change="handleCurrentChange" />
+
+  <el-dialog v-model="dialogVisible1" title="详情" width="800px">
+    <el-form model="eventData" label-width="100px" class="form" :size="formSize">
+      <el-form-item label="比赛名称" prop="eventName">
+        <el-input v-model="eventData.eventName" placeholder=eventData.eventName disabled/>
+      </el-form-item>
+      <el-form-item label="比赛日期" prop="eventDate">
+        <el-input v-model="eventData.eventDate" placeholder=eventData.eventDate disabled/>
+      </el-form-item>
+      <el-form-item label="比赛时间" prop="eventTime">
+        <el-input v-model="eventData.eventTime" placeholder=eventData.eventTime disabled/>
+      </el-form-item>
+      <el-form-item label="比赛地点" prop="eventZone">
+        <el-input v-model="eventData.eventZone" placeholder=eventData.eventZone disabled/>
+      </el-form-item>
+      <el-form-item label="参加人数" prop="eventPlayernumber,eventJoinednumber">
+        <el-input v-model="eventData.eventJoinednumber" placeholder=eventData.eventJoinednumber disabled/>
+        <el-input v-model="eventData.eventPlayernumber" placeholder=eventData.eventPlayernumber disabled/>
+      </el-form-item>
+    </el-form>
+  </el-dialog>
 </template>
   
 <script >
@@ -38,7 +47,8 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      dialogVisible: false,
+      dialogVisible1: false,
+      join: false,
       tableData: [
         {
           eventId: '',
@@ -52,6 +62,7 @@ export default {
           eventHolder: '',
         },
       ],
+      eventData:{},
       page: 1,
       limit: 5,
       total: 0
@@ -76,13 +87,32 @@ export default {
     handleCurrentChange(val) {
       this.page = val
     },
-    handleClose(done) {
-        this.$confirm('确认关闭？')
-          .then(_ => {
-            done();
-          })
-          .catch(_ => {});
+    eventDetail(id){
+      this.tableData.forEach((item) => {
+        if (item.eventId == id) {
+          this.eventData = item
+        }
+      })
+      this.dialogVisible1 = true
+    },
+    open() {
+        this.$confirm('此操作完成报名操作, 是否继续?', '提示', {
+          confirmButtonText: '好，我冲！',
+          cancelButtonText: '不好，跑了！',
+          type: 'warning'
+        }).then(() => {
+          this.$message({
+            type: 'success',
+            message: '报名成功!'
+          });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消报名'
+          });          
+        });
       }
+
   }
 }
 

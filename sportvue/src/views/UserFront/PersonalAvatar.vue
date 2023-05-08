@@ -1,5 +1,5 @@
 <template>
-    <h1>PersonalAvater</h1>
+    <h1>修改头像</h1>
     <el-upload
   class="avatar-uploader"
   action="http://localhost:9090/file/upload"

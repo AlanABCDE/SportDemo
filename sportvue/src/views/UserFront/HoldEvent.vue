@@ -30,7 +30,7 @@
         </el-col>
         <el-col :span="11">
           <el-form-item prop="eventTime">
-            <el-time-picker v-model="tableData.eventTime" label="Pick a time" placeholder="选个日期" style="width: 100%" />
+            <el-time-picker v-model="tableData.eventTime" value-format="HH:mm:ss" label="Pick a time" placeholder="选个日期" style="width: 100%" />
           </el-form-item>
         </el-col>
       </el-form-item>

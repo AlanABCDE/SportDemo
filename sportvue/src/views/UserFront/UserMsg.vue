@@ -4,17 +4,10 @@
     <el-table :data="tableData.slice((page - 1) * limit, page * limit)">
       <el-table-column prop="msgId" label="编号" width="180" />
       <el-table-column prop="title" label="标题" width="180" />
-      <el-table-column prop="date" label="发布日期" width="150" />
-      <el-table-column fixed="right" label="Operations" width="180">
-        <template #default>
-          <el-button link type="primary" size="small" @click="dialogVisible = true">Detail</el-button>
-          <el-dialog title="提示" :visible.sync="dialogVisible" width="30%" :before-close="handleClose">
-            <span>这是一段信息</span>
-            <span slot="footer" class="dialog-footer">
-              <el-button @click="dialogVisible = false">取 消</el-button>
-              <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
-            </span>
-          </el-dialog>
+      <el-table-column prop="createTime" label="发布日期" width="150" />
+      <el-table-column fixed="right" label="操作" width="180">
+        <template v-slot="scope">
+          <el-button link type="primary" size="small" @click="check(scope.row.msgId)">详情</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -22,6 +15,22 @@
       layout="total, sizes, prev, pager, next, jumper" :total="total" @size-change="handleSizeChange"
       @current-change="handleCurrentChange" />
   </div>
+  <el-dialog title="详情" v-model="dialogVisible" width="800px" height="800px">
+    <el-form :inline="false" :label-position="labelPosition" :model="formInline" label-width="100px">
+      <el-form-item label="标题" prop="title">
+        <el-input v-model="msgData.title" disabled />
+      </el-form-item>
+      <el-form-item label="内容" prop="content">
+        <el-input v-model="msgData.content" autosize type="textarea" disabled />
+      </el-form-item>
+      <el-form-item label="发布日期" prop="createTime">
+        <el-input v-model="msgData.createTime" disabled />
+      </el-form-item>
+    </el-form>
+    <span slot="footer" class="dialog-footer">
+      <el-button type="primary" @click="dialogVisible = false">关 闭</el-button>
+    </span>
+  </el-dialog>
 </template>
   
 <script>
@@ -29,15 +38,16 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      dialogVisible: false,
       tableData: [
         {
           msgId: '',
           title: '',
           content: '',
-          date: '',
+          createTime: '',
         },
       ],
+      msgData: {},
+      dialogVisible: false,
       page: 1,
       limit: 5,
       total: 0
@@ -52,13 +62,14 @@ export default {
       })
   },
   methods: {
-    handleClose(done) {
-        this.$confirm('确认关闭？')
-          .then(_ => {
-            done();
-          })
-          .catch(_ => {});
-      },
+    check(id) {
+      this.tableData.forEach((item) => {
+        if (item.msgId == id) {
+          this.msgData = item
+        }
+      })
+      this.dialogVisible = true
+    },
     handleSizeChange(val) {
       this.limit = val
       this.page = 1
@@ -75,6 +86,7 @@ export default {
   padding-left: 500px;
   background-color: rgb(255, 255, 255);
 }
+
 .el-scrollbar {
   margin-right: 600px;
 }
