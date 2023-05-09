@@ -56,7 +56,7 @@
                         </el-sub-menu>
                         <el-menu-item index="9">
                             <RouterLink to="/">
-                                <h1 class="h1">关于我</h1>
+                                <h1 class="h1">门户</h1>
                             </RouterLink>
                         </el-menu-item>
                         <el-sub-menu>
@@ -79,8 +79,6 @@
     </div>
 </template>
 <script >
-import axios from 'axios';
-import { ref } from 'vue'
 export default {
     name: "Front",
     data() {

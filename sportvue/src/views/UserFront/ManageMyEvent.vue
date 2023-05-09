@@ -1,11 +1,7 @@
 <template>
   <div class="body">
     <h1>管理我的赛事</h1>
-    <div class="search">
-      <el-input style="width: 200px" placeholder="请输入举办人姓名" suffix-icon="el-icon-search" v-model="eventHolder"></el-input>
-      <el-button class="ml-5" type="primary" @click="load">搜索</el-button>
-      <el-button type="warning" @click="reset">重置</el-button>
-    </div>
+    <span class="s1">你好 {{ user.username }} , 以下是你举办的赛事</span>
     <el-table :data="tableData.slice((page - 1) * limit, page * limit)" style="width: 100%;height: 300px;">
       <el-table-column prop="eventId" label="比赛编号" width="180" />
       <el-table-column prop="eventName" label="比赛名称" width="180" />
@@ -77,12 +73,12 @@
   </el-dialog>
 </template>
 <script>
+
 import axios from 'axios';
-
-
 export default{
   data() {
     return {
+      user: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : {},
       tableData: [],
       managerData: {},
       eventHolder: '',
@@ -93,6 +89,15 @@ export default{
     }
   },
   created() {
+    axios.get("http://localhost:9090/event/selEvent/" + this.user.username, {
+      })
+        .then(res => {
+          console.log(JSON.stringify(res.data.data))
+          this.tableData = res.data.data
+          this.total = res.data.data.length
+          console.log("-------------------------------")
+          console.log(JSON.stringify(this.tableData.data))
+        })
   },
   methods: {
     load() {
@@ -105,10 +110,6 @@ export default{
           console.log("-------------------------------")
           console.log(JSON.stringify(this.tableData.data))
         })
-    },
-    reset() {
-      this.eventHolder = ''
-      //this.load()
     },
     deleteEvent(eventId) {
       console.log(eventId)
@@ -153,5 +154,9 @@ export default{
 
 .search {
   margin: 100px 0;
+}
+
+.s1{
+  margin-right:742px;
 }
 </style>

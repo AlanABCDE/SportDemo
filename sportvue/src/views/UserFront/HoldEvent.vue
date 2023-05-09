@@ -154,6 +154,13 @@ export default {
                 this.$message.error(res.data.msg)
               }
             })
+            axios.post("http://localhost:9090/match/addMatch", this.tableData).then(res => {
+              if(res.data.code === '200') {
+                this.$message.success("创建成功")
+              } else {
+                this.$message.error(res.data.msg)
+              }
+            })
       }
 
   }

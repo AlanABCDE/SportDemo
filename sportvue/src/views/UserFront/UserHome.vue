@@ -1,6 +1,6 @@
 <template>
     <div class="box">
-    <h1>欢迎使用校园体育赛事管理平台</h1>
+    <h1>欢迎使用校园体育赛事管理网站</h1>
     <div>
         <div class="demo-image__lazy">
             <el-carousel indicator-position="outside">

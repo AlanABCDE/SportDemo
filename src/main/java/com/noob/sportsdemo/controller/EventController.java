@@ -3,8 +3,10 @@ package com.noob.sportsdemo.controller;
 import com.google.gson.Gson;
 import com.noob.sportsdemo.common.Result;
 import com.noob.sportsdemo.entity.Event;
+import com.noob.sportsdemo.entity.Matchresult;
 import com.noob.sportsdemo.mapper.EventMapper;
 import com.noob.sportsdemo.service.impl.EventServiceImpl;
+import com.noob.sportsdemo.service.impl.MatchresultServiceImpl;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +21,8 @@ public class EventController {
 
     @Resource
     private EventServiceImpl eventService;
+    @Resource
+    private MatchresultServiceImpl matchresultService;
 
     @Resource
     public EventMapper eventMapper;
@@ -26,7 +30,7 @@ public class EventController {
     public Gson gson = new Gson();
 
     @GetMapping("/getEvent")
-    public String getUser() {
+    public String getEvent() {
         List<Event> events = eventMapper.selectList(null);
         System.out.println(events);
         return gson.toJson(events);

@@ -52,6 +52,15 @@ const router = createRouter({
                 { path: 'team', name: 'Team',component: () => import('../views/UserFront/Team.vue')},
                 { path: 'usermsg', name: 'UserMsg',component: () => import('../views/UserFront/UserMsg.vue')},
             ]
+        },
+        {
+            path: '/guestfront',
+            name: 'guestfront',
+            component: () => import(`../views/GuestFront/GuestFront.vue`),
+            children: [
+                { path: 'guesthome', name: 'GuestHome',component: () => import('../views/GuestFront/GuestHome.vue')},
+                
+            ]
         }
     ]
 })

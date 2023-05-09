@@ -162,8 +162,6 @@ export default {
           this.$message.error(res.data.msg)
         }
       })
-      
-      
     },
     deleteMsg(msgId) {
       console.log(msgId)
@@ -183,7 +181,6 @@ export default {
         }
       })
       this.dialogVisible1 = true
-
     }
   }
 }

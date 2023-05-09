@@ -33,7 +33,7 @@ export default {
     },
     goUserHome() {
       const _this = this;
-      _this.$router.push('/userfront/userhome');
+      _this.$router.push('/guestfront/guesthome');
     },
     test() {
       const _this = this;
