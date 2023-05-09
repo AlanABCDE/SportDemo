@@ -17,4 +17,9 @@ public class EventServiceImpl extends ServiceImpl<EventMapper, Event> implements
     public List<Event> selectByEvent(String eventHolder) {
         return eventMapper.selectByEventHolder(eventHolder);
     }
+
+    @Override
+    public void joinEvent(Integer id) {
+        eventMapper.joinEvent(id);
+    }
 }

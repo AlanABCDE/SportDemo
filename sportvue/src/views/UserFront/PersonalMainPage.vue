@@ -31,8 +31,8 @@
           <el-form-item label="所属班级" prop="classNo">
             <el-input v-model="tableData.classNo" disabled />
           </el-form-item>
-          <el-form-item label="所属队伍" prop="teamId">
-            <el-input v-model="tableData.teamId" disabled />
+          <el-form-item label="所属队伍" prop="teamName">
+            <el-input v-model="tableData.teamName" disabled />
           </el-form-item>
         </el-form>
       </div>
@@ -70,9 +70,9 @@
           <el-input v-model="userInfo.classNo"  />
         </el-col>
       </el-form-item>
-      <el-form-item label="所属队伍" prop="teamId">
+      <el-form-item label="所属队伍" prop="teamName">
         <el-col :span="8">
-          <el-input v-model="userInfo.teamId"  />
+          <el-input v-model="userInfo.teamName"  />
         </el-col>
       </el-form-item>
     </el-form>
@@ -96,6 +96,7 @@ export default {
         email:'',
         classNo:'',
         teamId:'',
+        teamName:'',
       },
       userInfo:{
         username:'',
@@ -105,6 +106,7 @@ export default {
         email:'',
         classNo:'',
         teamId:'',
+        teamName:'',
       },
       dialogVisible: false,
       user: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : {}

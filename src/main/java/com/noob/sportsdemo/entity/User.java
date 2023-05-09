@@ -26,6 +26,7 @@ public class User  {
     private String teamId;
     @TableField(exist = false)
     private String avatarUrl;
+    private String teamName;
 
 
 /*    @Override

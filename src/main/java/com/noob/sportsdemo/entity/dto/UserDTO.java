@@ -17,6 +17,8 @@ public class UserDTO {
     private String email;
     private String classNo;
     private String teamId;
+    private String teamName;
+
 
 
 }

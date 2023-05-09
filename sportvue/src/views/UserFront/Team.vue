@@ -8,7 +8,7 @@
         </div>
         <el-table :data="tableData.slice((page - 1) * limit, page * limit)" style="width: 100%;height: 300px;">
             
-            <el-table-column prop="teamId" label="小队编号" width="180" />
+            
             <el-table-column prop="teamName" label="小队名称" width="180" />
             <el-table-column prop="username" label="小队成员" width="180" />
             <el-table-column prop="classNo" label="所属班级" />

@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface IEventService extends IService<Event> {
     List<Event> selectByEvent(String eventHolder);
+
+    void joinEvent(Integer id);
 }

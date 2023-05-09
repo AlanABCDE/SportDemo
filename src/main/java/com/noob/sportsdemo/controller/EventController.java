@@ -1,6 +1,8 @@
 package com.noob.sportsdemo.controller;
 
+import cn.hutool.core.util.StrUtil;
 import com.google.gson.Gson;
+import com.noob.sportsdemo.common.Constants;
 import com.noob.sportsdemo.common.Result;
 import com.noob.sportsdemo.entity.Event;
 import com.noob.sportsdemo.entity.Matchresult;
@@ -48,5 +50,10 @@ public class EventController {
     @GetMapping ("/selEvent/{eventHolder}")
     public Result selEvent(@PathVariable String eventHolder) {
         return Result.success(eventService.selectByEvent(eventHolder));
+    }
+    @PostMapping("/joinEvent/{id}")
+    public Result joinEvent(@PathVariable Integer id){
+        eventService.joinEvent(id);
+        return Result.success();
     }
 }
