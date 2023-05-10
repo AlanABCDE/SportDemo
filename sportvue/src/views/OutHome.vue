@@ -3,7 +3,6 @@
     <h1 class="fadein">欢迎使用体育赛事管理网站</h1>
     <div class="wapper">
       <el-button type="primary" @click="goUserHome">我就看看</el-button>
-      <el-button type="primary" @click="test">权</el-button>
       <el-button type="primary" @click="goLog">得先登录</el-button>
       <el-button type="primary" @click="goReg">还没注册?</el-button>
     </div>
@@ -51,6 +50,9 @@ export default {
 
 .wapper {
   margin: -5% 0 0 75%;
+    width: 350px; height: 40px; padding: 20px; border-radius: 10px;
+  background-color: rgba(236,239,247, 0.9);
+  border:100px;
 }
 
 .back {

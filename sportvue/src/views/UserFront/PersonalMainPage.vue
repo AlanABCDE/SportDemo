@@ -8,6 +8,7 @@
       <template #header>
         <div class="card-header">
           <span>我的信息</span>
+          <el-button @click="checkEvent" text>已参加的赛事</el-button>
           <el-button @click="check" text>编辑</el-button>
         </div>
       </template>
@@ -47,49 +48,56 @@
       </el-form-item>
       <el-form-item label="密码" prop="password">
         <el-col :span="8">
-          <el-input v-model="userInfo.password"  />
+          <el-input v-model="userInfo.password" />
         </el-col>
       </el-form-item>
       <el-form-item label=" 性别" prop="sex">
         <el-col :span="8">
-          <el-input v-model="userInfo.sex"  />
+          <el-input v-model="userInfo.sex" />
         </el-col>
       </el-form-item>
       <el-form-item label="角色" prop="role">
         <el-col :span="8">
-          <el-input v-model="userInfo.role"  disabled/>
+          <el-input v-model="userInfo.role" disabled />
         </el-col>
       </el-form-item>
       <el-form-item label="电子邮箱" prop="email">
         <el-col :span="8">
-          <el-input v-model="userInfo.email"  />
+          <el-input v-model="userInfo.email" />
         </el-col>
       </el-form-item>
       <el-form-item label="所属班级" prop="classNo">
         <el-col :span="8">
-          <el-input v-model="userInfo.classNo"  />
+          <el-input v-model="userInfo.classNo" />
         </el-col>
       </el-form-item>
       <el-form-item label="所属队伍" prop="teamName">
         <el-col :span="8">
           <el-select v-model="userInfo.teamName" placeholder="队伍">
-          <el-option label="ptsd" value="ptsd" />
-          <el-option label="三三说的都对" value="三三说的都对" />
-          <el-option label="罕见" value="罕见" />
-          <el-option label="队1" value="队1" />
-          <el-option label="队2" value="队2" />
-          <el-option label="队3" value="队3" />
-          <el-option label="队4" value="队4" />
-          <el-option label="队5" value="队5" />
-          <el-option label="队6" value="队6" />
-        </el-select>
+            <el-option label="ptsd" value="ptsd" />
+            <el-option label="三三说的都对" value="三三说的都对" />
+            <el-option label="罕见" value="罕见" />
+            <el-option label="队1" value="队1" />
+            <el-option label="队2" value="队2" />
+            <el-option label="队3" value="队3" />
+            <el-option label="队4" value="队4" />
+            <el-option label="队5" value="队5" />
+            <el-option label="队6" value="队6" />
+          </el-select>
         </el-col>
       </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
-      <el-button  @click="dialogVisible = false">关 闭</el-button>
+      <el-button @click="dialogVisible = false">关 闭</el-button>
       <el-button type="primary" @click="submit">提 交</el-button>
     </span>
+  </el-dialog>
+  <el-dialog  v-model="dialogVisible2" title="查询" width="1000px">
+    <el-table :data="signData2" >
+      <el-table-column prop="eventName" label="eventname"></el-table-column>
+      <el-table-column prop="uid" label="uid"></el-table-column>
+      <el-table-column prop="username" label="username"></el-table-column>
+    </el-table>
   </el-dialog>
 </template>
 <script>
@@ -98,27 +106,30 @@ export default {
   name: "UserMsg",
   data() {
     return {
-      tableData:{
-        username:'',
-        password:'',
-        sex:'',
-        role:'',
-        email:'',
-        classNo:'',
-        teamId:'',
-        teamName:'',
+      tableData: {
+        username: '',
+        password: '',
+        sex: '',
+        role: '',
+        email: '',
+        classNo: '',
+        teamId: '',
+        teamName: '',
       },
-      userInfo:{
-        username:'',
-        password:'',
-        sex:'',
-        role:'',
-        email:'',
-        classNo:'',
-        teamId:'',
-        teamName:'',
+      userInfo: {
+        username: '',
+        password: '',
+        sex: '',
+        role: '',
+        email: '',
+        classNo: '',
+        teamId: '',
+        teamName: '',
       },
+      signData:{},
+      signData2:{},
       dialogVisible: false,
+      dialogVisible2: false,
       user: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : {}
 
     }
@@ -130,26 +141,34 @@ export default {
         this.tableData = res.data.data
         console.log(this.tableData)
       })
-  },
-  methods: {
-    load(){
-      axios.get("http://localhost:9090/user/selUser/" + this.user.username)
+      axios.get("http://localhost:9090/sign/selUser/" + this.user.username)
       .then(res => {
         console.log(res)
-        this.tableData = res.data
-        console.log(this.tableData)
+        this.signData = res.data.data
+        console.log("-----111------")
+        console.log(this.signData)
       })
+
+  },
+  methods: {
+    load() {
+      axios.get("http://localhost:9090/user/selUser/" + this.user.username)
+        .then(res => {
+          console.log(res)
+          this.tableData = res.data
+          console.log(this.tableData)
+        })
     },
     goLog() {
       const _this = this;
       _this.$router.push('/login');
     },
-      check(){
-        this.userInfo = this.tableData
+    check() {
+      this.userInfo = this.tableData
       this.dialogVisible = true
-      },
-      submit(){
-        console.log(this.userInfo)
+    },
+    submit() {
+      console.log(this.userInfo)
       axios.post("http://localhost:9090/user/updateUserInfo", this.userInfo).then(res => {
         if (res.data.code === '200') {
           this.$message.success("修改成功")
@@ -159,7 +178,12 @@ export default {
           this.$message.error(res.data.msg)
         }
       })
-      }
+    },
+    checkEvent(){
+      this.dialogVisible2 = true
+      this.signData2 = this.signData
+      console.log(this.signData2)
+    }
   }
 }
 </script>

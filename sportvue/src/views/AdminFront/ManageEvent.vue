@@ -1,5 +1,9 @@
 <template v-slot="scope">
   <h1>赛事管理</h1>
+
+  <div>
+    <el-button class="b1" @click="checkEvent">看看报名名单</el-button>
+  </div>
   <el-table :data="tableData.slice((page - 1) * limit, page * limit)" style="width: 100%" @row-click="getrowid">
     <el-table-column prop="eventId" label="赛事编号" width="180" />
     <el-table-column prop="eventName" label="赛事名称" width="180" />
@@ -9,7 +13,6 @@
     <el-table-column prop="eventDis" label="赛事描述" />
     <el-table-column prop="eventPlayernumber" label="参赛人数" />
     <el-table-column prop="eventHolder" label="举办人" />
-
     <el-table-column label="操作">
       <template v-slot="scope">
       <el-button @click="managerevent(scope.row.eventId)">管理</el-button>
@@ -84,6 +87,13 @@
       </el-form-item>
     </el-form>
   </el-dialog>
+  <el-dialog  v-model="dialogVisible2" title="查询" width="1000px">
+    <el-table :data="signData2" >
+      <el-table-column prop="eventName" label="eventname"></el-table-column>
+      <el-table-column prop="uid" label="uid"></el-table-column>
+      <el-table-column prop="username" label="username"></el-table-column>
+    </el-table>
+  </el-dialog>
 </template>
   
 <script>
@@ -94,7 +104,7 @@ export default {
     return {
       tableData: [
         {
-          evnetId: '',
+          eventId: '',
           eventName: '',
           eventDate: '',
           eventTime: '',
@@ -106,7 +116,10 @@ export default {
         },
       ],
       managerData: {},
+      signData:{},
+      signData2:{},
       dialogVisible1: false,
+      dialogVisible2: false,
       page: 1,
       limit: 5,
       total: 0
@@ -118,6 +131,13 @@ export default {
         console.log(res)
         this.tableData = [...res.data]
         this.total = res.data.length
+      }),
+      axios.get("http://localhost:9090/sign/getUser")
+      .then(res => {
+        console.log(res)
+        this.signData = res.data
+        console.log("-----111------")
+        console.log(this.signData)
       })
   },
   methods: {
@@ -166,10 +186,20 @@ export default {
         }
       })
     },
+    checkEvent(){
+      this.dialogVisible2 = true
+      this.signData2 = this.signData
+      console.log(this.signData2)
+    }
   },
 
 }
 
 </script>
+<style>
+.b1{
+  margin-right: 1700px;
+}
+</style>
   
   
