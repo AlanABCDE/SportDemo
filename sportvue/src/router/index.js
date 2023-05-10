@@ -59,6 +59,8 @@ const router = createRouter({
             component: () => import(`../views/GuestFront/GuestFront.vue`),
             children: [
                 { path: 'guesthome', name: 'GuestHome',component: () => import('../views/GuestFront/GuestHome.vue')},
+                { path: 'guestevent', name: 'GuestEvent',component: () => import('../views/GuestFront/GuestEvent.vue')},
+                { path: 'guestscoreboard', name: 'GuestScoreBoard',component: () => import('../views/GuestFront/GuestScoreBoard.vue')},
                 
             ]
         }

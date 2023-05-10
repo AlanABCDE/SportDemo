@@ -1,5 +1,5 @@
 <template>
-  <h1>赛事成绩管理</h1>
+  <h1>赛事成绩浏览</h1>
   
   <el-table :data="tableData.slice((page - 1) * limit, page * limit)" style="width: 100%">
   <el-table-column prop="matchId" label="成绩编号" width="180" />

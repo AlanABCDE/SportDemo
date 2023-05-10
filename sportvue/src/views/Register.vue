@@ -27,7 +27,7 @@
         </el-form-item>
           <el-form-item style="text-align: right" >
             <el-button type="primary" size="small"  autocomplete="off" @click="register()">注册</el-button>
-            <el-button type="warning" size="small"  autocomplete="off" @click="$router.push('/login')">返回登录</el-button>
+            <el-button type="warning" size="small"  autocomplete="off" @click="goLog()">返回登录</el-button>
           </el-form-item>
       </div>
     </div>
@@ -87,6 +87,10 @@
                 this.$message.error(res.data.msg)
               }
             })
+      },
+      goLog(){
+        this.$router.push('/login')
+        
       }
     }
   }
@@ -94,18 +98,18 @@
   
   <style>
   .wrapper {
-    background-image: url('https://cdn4.eyeem.com/thumb/b62716d62756471677a3a3a373236333130363432323734313d283133346531393364343631656636666464663330316533326337343434683137303236663666626a3a3a3/1100/1100');
-    background-size:100% 100%;
+    background-image: url('E:\Code\Driving\SportDemo\sportvue\src\assets\index\bg\60.png');
+    background-size:cover;
     width: 100%;
     position: absolute;
     height:100%
     }
   .block{
   margin: 200px auto;  width: 350px; height: 300px; padding: 20px; border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(236,239,247, 0.78);
   border:100px;
 }
 .txt{
-  color: rgb(211, 211, 211);
+  color: rgb(0, 0, 0);
 }
   </style>

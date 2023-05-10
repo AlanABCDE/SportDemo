@@ -24,7 +24,7 @@
                             </el-menu-item>
                         </el-tooltip>
                         <el-menu-item index="4">
-                            <RouterLink to="joinevent">
+                            <RouterLink to="guestevent">
                                 <h1 class="h1">寻找赛事</h1>
                             </RouterLink>
                         </el-menu-item>
@@ -43,7 +43,7 @@
                             </el-menu-item>
                         </el-tooltip>
                         <el-menu-item index="7">
-                            <RouterLink to="scoreboard">
+                            <RouterLink to="guestscoreboard">
                                 <h1 class="h1">得分榜</h1>
                             </RouterLink>
                         </el-menu-item>

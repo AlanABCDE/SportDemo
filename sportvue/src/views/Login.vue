@@ -36,10 +36,13 @@ export default {
           { required: true, message: '请输入密码', trigger: 'blur' },
           { min: 1,  message: '长度大于 1 字符', trigger: 'blur' }
         ],
-      }
+      },
+      count:0,
     }
   },
   created() {
+
+    
 
   },
 
@@ -88,18 +91,18 @@ export default {
   
 <style>
 .wrapper {
-  background-image: url('https://cdn4.eyeem.com/thumb/b62716d62756471677a3a3a373236323133333031323335313d293531366161693834613361603437366460383136673837303433656037323333336164336164646a3a3a3/1100/1100');
- background-size:100% 100%;
+  background-image: url('E:\Code\Driving\SportDemo\sportvue\src\assets\index\bg\59.png');
+ background-size:cover;
     width: 100%;
     position: absolute;
     height:100%
 }
 .block{
   margin: 200px auto;  width: 350px; height: 300px; padding: 20px; border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(236,239,247, 0.78);
   border:100px;
 }
 .txt{
-  color: rgb(211, 211, 211);
+  color: rgb(0, 0, 0);
 }
 </style>

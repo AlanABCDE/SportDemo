@@ -54,11 +54,12 @@ export default {
 }
 
 .back {
-  background-image: url('E:\Code\Driving\SportDemo\sportvue\src\assets\index\94830716_p0.png');
-  background-size: 100% 100%;
-  width: 100%;
+  background-image: url('E:\Code\Driving\SportDemo\sportvue\src\assets\index\bg\62.png');
+  background-size: cover;
+  width: 1900px;
   position: absolute;
-  height: 100%
+  height: 1000px;
+
 }
 
 .img {
