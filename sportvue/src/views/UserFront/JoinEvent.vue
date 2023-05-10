@@ -53,12 +53,14 @@
   
 <script >
 import axios from 'axios';
+
 export default {
   data() {
     return {
       dialogVisible1: false,
       dialogVisible2: false,
       join: false,
+      user: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : {},
       tableData: [
         {
           eventId: '',
@@ -73,6 +75,8 @@ export default {
         },
       ],
       eventData:{},
+      userInfo:{},
+      signData:{},
       id: '',
       joinedplayer: '',
       totalplayer: '',
@@ -88,6 +92,13 @@ export default {
         console.log(res)
         this.tableData = [...res.data]
         this.total = res.data.length
+      }),
+      axios.get("http://localhost:9090/user/selUser/" + this.user.username)
+      .then(res => {
+        console.log(res)
+        this.userInfo = res.data.data
+        console.log(this.userInfo)
+        this.signData.username=this.userInfo.username
       })
   },
   methods: {
@@ -112,6 +123,8 @@ export default {
       this.tableData.forEach((item) => {
         if (item.eventId == id) {
           this.eventData = item
+          
+          
         }
       })
       this.dialogVisible1 = true
@@ -122,7 +135,8 @@ export default {
           this.id = item.eventId
           this.totalplayer = item.eventPlayernumber
           this.joinedplayer = item.eventJoinednumber
-
+          this.signData.eventId = item.eventId
+          this.signData.eventName = item.eventName
         }
       })
       this.dialogVisible2 = true
@@ -132,13 +146,15 @@ export default {
       console.log("---------------")
       console.log(this.totalplayer)
       console.log(this.joinedplayer)
-      if (this.joinedplayer + 1 <= this.totalplayer) {
+      if (this.joinedplayer - 0 + 1 <= this.totalplayer) {
         axios.post("http://localhost:9090/event/joinEvent/" + this.id)
         .then(res => {
         if (res.data.code === '200') {
-          this.$message.success("修改成功")
+          this.$message.success("报名成功")
           this.dialogVisible2 = false
+         
           this.load()
+          
         } else {
           this.$message.error(res.data.msg)
         }
@@ -147,6 +163,11 @@ export default {
         this.$message.error("人满了，不能报名")
       }
     },
+    signnn(){
+      console.log(this.signData)
+      axios.post("http://localhost:9090/sign/sign", this.signData)
+    },
+
   }
 }
 

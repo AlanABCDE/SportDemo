@@ -67,6 +67,9 @@
       <el-form-item label="比赛人数" prop="eventPlayernumber">
         <el-input style="width: 100px;" v-model="managerData.eventPlayernumber" />
       </el-form-item>
+      <el-form-item label="已参加人数" prop="eventJoinednumber">
+        <el-input style="width: 100px;" v-model="managerData.eventJoinednumber" />
+      </el-form-item>
       <el-form-item label="承办人姓名" prop="eventHolder">
         <el-input v-model="managerData.eventHolder" />
       </el-form-item>
