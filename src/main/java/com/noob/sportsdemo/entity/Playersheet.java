@@ -13,6 +13,7 @@ public class Playersheet {
     private Integer sheetId;
     private Integer eventId;
     private String eventName;
+    private Integer uid;
     private String username;
 
 }

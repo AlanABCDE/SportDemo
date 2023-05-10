@@ -49,7 +49,7 @@ export default{
         },
         reset() {
             this.selteamName=''
-            //this.load()
+            this.load()
         },
         handleSizeChange(val) {
             this.limit = val

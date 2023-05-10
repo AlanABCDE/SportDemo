@@ -72,7 +72,17 @@
       </el-form-item>
       <el-form-item label="所属队伍" prop="teamName">
         <el-col :span="8">
-          <el-input v-model="userInfo.teamName"  />
+          <el-select v-model="userInfo.teamName" placeholder="队伍">
+          <el-option label="ptsd" value="ptsd" />
+          <el-option label="三三说的都对" value="三三说的都对" />
+          <el-option label="罕见" value="罕见" />
+          <el-option label="队1" value="队1" />
+          <el-option label="队2" value="队2" />
+          <el-option label="队3" value="队3" />
+          <el-option label="队4" value="队4" />
+          <el-option label="队5" value="队5" />
+          <el-option label="队6" value="队6" />
+        </el-select>
         </el-col>
       </el-form-item>
     </el-form>

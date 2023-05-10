@@ -99,6 +99,7 @@ export default {
         this.userInfo = res.data.data
         console.log(this.userInfo)
         this.signData.username=this.userInfo.username
+        this.signData.uid=this.userInfo.uid
       })
   },
   methods: {
@@ -152,7 +153,7 @@ export default {
         if (res.data.code === '200') {
           this.$message.success("报名成功")
           this.dialogVisible2 = false
-         
+          this.signnn()
           this.load()
           
         } else {
@@ -165,6 +166,7 @@ export default {
     },
     signnn(){
       console.log(this.signData)
+      console.log("---------------")
       axios.post("http://localhost:9090/sign/sign", this.signData)
     },
 
